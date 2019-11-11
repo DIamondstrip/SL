@@ -29,8 +29,10 @@ export default {};
 .nav {
   width: 100%;
   position: fixed;
+  background: white;
   bottom: 0;
   display: flex;
+  border-top: 1px solid #ccc;
 }
 
 .nav>div  {
