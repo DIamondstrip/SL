@@ -56,38 +56,52 @@
 </div>
 
 <div class="gifts">
+  <router-link to="/getGift">
     <a href="javascript:;" class="getgift">
         <van-icon name="balance-o" />
         收到的礼物：
         <span style="font-weight:600">26</span>
     </a>
-    <a href="javascript:;" class="putgift">
+  </router-link>
+    <router-link to="sengGift">
+<a href="javascript:;" class="putgift">
         <van-icon name="refund-o" />
         送出的礼物：
         <span style="font-weight:600">26</span>
     </a>
+    </router-link>
+    
 </div>
 
     </section>
     <section class="bottom">
       <div class="bottomul">
         <div class="Dli">
-          <div class="xq">
+          <router-link to="/idCard">
+             <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">证件上传</p>
           </div>
-          <div class="xq">
+          </router-link>
+         <router-link to="/account">
+             <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">账号安全</p>
           </div>
-          <div class="xq">
+         </router-link>
+        <router-link to="/photo">
+           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">个人相册</p>
           </div>
-          <div class="xq">
+        </router-link>
+         <router-link to="blackList">
+            <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">黑名单</p>
           </div>
+         </router-link>
+         
         </div>
         <div class="Dli">
           <div class="xq">
