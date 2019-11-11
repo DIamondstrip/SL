@@ -22,10 +22,14 @@ export default {
         Test
     },
     methods: {
+<<<<<<< HEAD
         returned(){
             // this.$router.push({ path: '/message' })
             this.$router.back();
         }
+=======
+      
+>>>>>>> f8be9b1c89b678682cc3228c9e757d18de5d3b05
     },
 };
 </script>

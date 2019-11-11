@@ -1,14 +1,317 @@
 <template>
-    <div>
-        789
-    </div>
+  <div class="main">
+    <section class="header">
+      <div class="renzheng">已认证</div>
+    </section>
+    <section class="brief">
+      <div class="xinxi">
+        <div class="xinxi-zuo">
+          <p class="name">
+            momomo
+            <span class="sex">26</span>
+            <!-- <span class="sex"></span> -->
+          </p>
+          <p class="ID">ID:2589484</p>
+          <p class="autograph">签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD</p>
+          <span class="guanzhu" style="margin-left: 0;">
+            关注 &nbsp;
+            <i class="inum">26</i>
+          </span>
+          <span class="guanzhu">
+            粉丝 &nbsp;
+            <i class="inum">26</i>
+          </span>
+          <span class="guanzhu">
+            来访 &nbsp;
+            <i class="inum">26</i>
+          </span>
+        </div>
+        <div class="xinxi-you">
+          <div class="HeadPortrait"></div>
+        </div>
+      </div>
+    </section>
+    <section class="Conversation">
+      <div class="shipin">
+        <p class="spmore">视频聊天 &gt;</p>
+        <van-switch v-model="checked" size="25px" />
+      </div>
+    </section>
+    <section class="account">
+      <div class="zhanghu">
+        <van-button color="linear-gradient(to right, #fe4d68, #ff8a5f)" round size="normal">
+          <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
+          我的账户 ：26
+        </van-button>
+        <van-button color="linear-gradient(to right, #2b6ada, #32a6fd)" round size="normal">
+          <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
+          我的金币 ：26
+        </van-button>
+      </div>
+    </section>
+    <section class="gift">
+<div class="mygift">
+    <span>我的礼物</span>
+    <span>&gt;</span>
+</div>
+
+<div class="gifts">
+    <a href="javascript:;" class="getgift">
+        <van-icon name="balance-o" />
+        收到的礼物：
+        <span style="font-weight:600">26</span>
+    </a>
+    <a href="javascript:;" class="putgift">
+        <van-icon name="refund-o" />
+        送出的礼物：
+        <span style="font-weight:600">26</span>
+    </a>
+</div>
+
+    </section>
+    <section class="bottom">
+      <div class="bottomul">
+        <div class="Dli">
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">证件上传</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">账号安全</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">个人相册</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">黑名单</p>
+          </div>
+        </div>
+        <div class="Dli">
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">设置</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">编辑资料</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">常见问题</p>
+          </div>
+          <div class="xq">
+            <div class="img"></div>
+            <p style="font-size:10px;text-align:center">分享</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 <script>
-
 export default {
-    
-}
+  data() {
+    return {
+      checked: true
+    };
+  }
+};
 </script>
-<style lang="">
+<style scoped>
+.main {
+  margin-bottom: 50px;
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background: white;
+}
+.brief {
+  width: 100%;
+  height: 183px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.Conversation {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+}
+.account {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  justify-content: center;
+}
+.gift {
+  width: 100%;
+  height: 121px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mygift{
+    width: 343px;
+    height: 22px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+.gifts{
+    width: 343px;
+    height: 55px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     
+    background: #f2f2f2;
+}
+.getgift{
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+.putgift{
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+.bottom {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.renzheng {
+  width: 66px;
+  height: 28px;
+  background: #ccc;
+  margin-left: 15px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 11px;
+}
+.xinxi {
+  width: 343px;
+  height: 154px;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.xinxi-zuo {
+  width: 217px;
+  height: 154px;
+}
+.xinxi-you {
+  width: 126px;
+  height: 154px;
+  display: flex;
+  justify-content: flex-end;
+}
+.name {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 11px 0;
+  color: black;
+}
+.sex {
+  display: inline-block;
+  width: 30px;
+  height: 13px;
+  border-radius: 10px;
+  background: #ff5277;
+  margin-left: 10px;
+  font-size: 10px;
+  text-align: center;
+  line-height: 13px;
+  color: white;
+}
+.ID {
+  font-size: 11px;
+  margin-bottom: 11px;
+}
+.autograph {
+  font-size: 13px;
+  /* margin-bottom: 11px; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.guanzhu {
+  font-size: 13px;
+  margin-left: 25px;
+  color: black;
+}
+.inum {
+  font-weight: 600;
+}
+.HeadPortrait {
+  width: 81px;
+  height: 81px;
+  border-radius: 50%;
+  background: #ff5277;
+  overflow: hidden;
+}
+.shipin {
+  width: 343px;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.spmore {
+  font-size: 14px;
+}
+.zhanghu {
+  width: 343px;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.bottomul {
+  width: 343px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Dli {
+  width: 309px;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+.xq {
+  width: 52px;
+  height: 76px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background: salmon;
+}
 </style>
