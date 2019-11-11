@@ -4,10 +4,7 @@ import router from './router'
 import store from './store'
 //引入外部框架设置自动转换rem单位
 import 'amfe-flexible'
-//引入外部mintui框架
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-Vue.use(MintUI)
+
 
 //awesome iconfont  自定义字体图标
 import './assets/css/font-awesome-4.7.0/css/font-awesome.min.css'
