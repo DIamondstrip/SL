@@ -11,8 +11,15 @@ const routes = [
     component: Friend
   }, {
     path: '/message',
-    component: Message
-  }, {
+    component: Message,
+  },{
+    path:'/tongzhi',
+    component: () => import('../views/message/tongzhi.vue')
+  },{
+    path:'/tonghua',
+    component: () => import('../views/message/tonghua.vue')
+  },
+  {
     path: '/mine',
     component: Mine
   },

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  <Header></Header>
   <router-view class="main"></router-view>
   <Footer></Footer>
   </div>
@@ -9,6 +8,7 @@
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+
 export default {
   data() {
     return {
@@ -171,7 +171,6 @@ export default {
     }
   },
     components:{
-      Header,
       Footer
     }
 }
