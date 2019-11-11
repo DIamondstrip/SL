@@ -1,6 +1,7 @@
 <template>
   <div id="app">
   <Header></Header>
+  <router-view class="main"></router-view>
   <Footer></Footer>
   </div>
 </template>
@@ -176,5 +177,12 @@ export default {
 }
 </script>
 <style>
-
+  #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main {
+    flex: 1;
+  }
 </style>

@@ -19,19 +19,21 @@ export default {
 
 <style scoped>
 div{
+  width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
   align-items: center;
-  text-align: center
 
 }
 li {
   font-size: 20px;
+  flex: 1;
+   margin: 5px 10px;
 }
 .title{
   margin-left: 50px;
-}
+} 
 
 .isex{
   background: #FF7363;
