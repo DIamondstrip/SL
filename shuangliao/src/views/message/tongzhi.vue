@@ -3,7 +3,7 @@
     <!-- <div class="top">
         <van-icon name="arrow-left" class="tuichu" @click="returned()"/>
         <span>通知</span>
-    </div> -->
+    </div>-->
     <Test>通知</Test>
     <div class="time">12:34</div>
     <div class="content">张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹张泽禹</div>
@@ -13,24 +13,15 @@
 </template>
 
 <script>
-import Test from '../../components/Test'
+import Test from "../../components/Test";
 export default {
-    data(){
-        return{}
-    },
-    components:{
-        Test
-    },
-    methods: {
-<<<<<<< HEAD
-        returned(){
-            // this.$router.push({ path: '/message' })
-            this.$router.back();
-        }
-=======
-      
->>>>>>> f8be9b1c89b678682cc3228c9e757d18de5d3b05
-    },
+  data() {
+    return {};
+  },
+  components: {
+    Test
+  },
+  methods: {}
 };
 </script>
 
@@ -46,18 +37,18 @@ export default {
   text-align: center;
   position: relative;
 }
-.top .tuichu{
-    margin-left:10px;
-    font-size: 24px;
-    position: absolute;
-    left:5px;
-    top:15px;
+.top .tuichu {
+  margin-left: 10px;
+  font-size: 24px;
+  position: absolute;
+  left: 5px;
+  top: 15px;
 }
 .time {
   text-align: center;
   font-size: 12px;
   line-height: 30px;
-  margin:5px 0px;
+  margin: 5px 0px;
 }
 .content {
   width: 300px;

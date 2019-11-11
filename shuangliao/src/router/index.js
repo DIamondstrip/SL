@@ -5,22 +5,12 @@ import Message from '../views/message/Message'
 import Mine from '../views/mine/Mine'
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     component: Friend
   }, {
     path: '/message',
     component: Message,
-<<<<<<< HEAD
-  },{
-    path:'/tongzhi',
-    component: () => import('../views/message/tongzhi.vue')
-  },{
-    path:'/tonghua',
-    component: () => import('../views/message/tonghua.vue')
-  },
-=======
   }, {
     path: '/tongzhi',
     component: () => import('../views/message/tongzhi.vue')
@@ -28,8 +18,6 @@ const routes = [
     path: '/tonghua',
     component: () => import('../views/message/tonghua.vue')
   },
-
->>>>>>> f8be9b1c89b678682cc3228c9e757d18de5d3b05
   {
     path: '/mine',
     component: Mine
