@@ -173,7 +173,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
   #app {
     display: flex;
     flex-direction: column;
@@ -181,6 +181,7 @@ export default {
   }
   .main {
     width: 100%;
+    flex:1;
     height: 100%;
   }
 </style>

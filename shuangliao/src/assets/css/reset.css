@@ -32,7 +32,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 textarea{
     outline: none;
 }
-
+/* 怪异盒模型 */
+*{
+    box-sizing: border-box;
+}
 /* 图片自适应 */
 img {
   width: 100%;
@@ -157,6 +160,7 @@ a:link,a:active,a:visited,a:hover {
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
 }
+
 
 /* .fade-leave-active in <2.1.8 */
 .fade-enter, .fade-leave-to {
