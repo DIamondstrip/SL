@@ -62,6 +62,8 @@ methods: {
 .nav {
   width: 100%;
   position: fixed;
+  display: flex;
+  flex-direction: row;
   background: white;
   bottom: 0;
   border-top: 1px solid #ccc;
