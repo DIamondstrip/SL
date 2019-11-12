@@ -24,11 +24,11 @@
 import Eventbus from '../eventbus.js'
 export default {
 mounted() {
-  eventbus.$on('showFooter',(isShow)=>{
+  Eventbus.$on('showFooter',(isShow)=>{
       if(isShow){
-        $refs.nav.style.display="block";
+        this.$refs.nav.style.display="block";
       }else{
-        $refs.nav.style.display="none";
+        this.$refs.nav.style.display="none";
 
       }
   })

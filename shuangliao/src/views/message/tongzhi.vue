@@ -14,6 +14,7 @@
 
 <script>
 import Test from "../../components/Test";
+import eventbus from '../../eventbus'
 export default {
   data() {
     return {};
@@ -21,8 +22,14 @@ export default {
   components: {
     Test
   },
-  methods: {}
+  methods: {
+
+  },
+  mounted() {
+    eventbus.$emit('showFooter',false)
+  },
 };
+
 </script>
 
 
