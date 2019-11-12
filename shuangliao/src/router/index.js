@@ -15,7 +15,7 @@ const routes = [{
     component:Search
   },
   {
-    path:'/details',
+    path:'/details',//path:'/details/:id' 通过id传参,在mounted钩子函数中获取对应的数据
     component: () => import('../views/like/details.vue')
   },
   {

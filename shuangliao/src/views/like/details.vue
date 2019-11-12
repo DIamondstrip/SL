@@ -94,6 +94,7 @@ export default {
       eventbus.$emit('showFooter',false)
   },
 };
+// mounted ()   this.$route.params.id
 </script>
 <style scoped>
 .top {
