@@ -26,7 +26,7 @@ export default {
 mounted() {
   Eventbus.$on('showFooter',(isShow)=>{
       if(isShow){
-        this.$refs.nav.style.display="block";
+        this.$refs.nav.style.display="flex";
       }else{
         this.$refs.nav.style.display="none";
 

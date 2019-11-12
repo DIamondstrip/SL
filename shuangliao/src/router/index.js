@@ -14,6 +14,10 @@ const routes = [{
   //   component:Search
   // },
   {
+    path:'/details',
+    component: () => import('../views/like/details.vue')
+  },
+  {
     path: '/message',
     component: Message,
   }, {
