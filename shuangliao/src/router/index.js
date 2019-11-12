@@ -8,7 +8,12 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: Friend
-  }, {
+  }, 
+  {
+    path:'/search',
+    component:Search
+  },
+  {
     path: '/message',
     component: Message,
   }, {

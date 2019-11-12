@@ -1,5 +1,7 @@
 <template>
-  <div class="idCard">
+<div>
+  <Test>证件上传</Test>
+<div class="idCard">
     <!-- 身份证号输入 -->
     <div class="idNum">
       <p>身份证号：</p>
@@ -24,9 +26,12 @@
       <p>3. 若您上传虚假信息或盗用他人资料等，我司有权对您进行封号处理，情节严重将追究法律责任</p>
     </div>
   </div>
+</div>
+  
 </template>
 
 <script>
+import Test from "../../components/Test";
 export default {
   name: "idCard",
   data() {
@@ -34,7 +39,10 @@ export default {
   },
   methods: {},
   computed: {},
-  components: {}
+  components: {
+    Test
+  }
+  
 };
 </script>
 <style scoped>
