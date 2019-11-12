@@ -9,10 +9,10 @@ const routes = [{
     path: '/',
     component: Friend
   }, 
-  {
-    path:'/search',
-    component:Search
-  },
+  // {
+  //   path:'/search',
+  //   component:Search
+  // },
   {
     path: '/message',
     component: Message,

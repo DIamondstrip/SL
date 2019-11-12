@@ -1,5 +1,5 @@
 <template>
-  <div class="nav">
+  <div class="nav" ref="nav">
     <div>
       <router-link to="/">
         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -21,7 +21,19 @@
 </template>
 
 <script>
-export default {};
+import Eventbus from '../eventbus.js'
+export default {
+mounted() {
+  eventbus.$on('showFooter',(isShow)=>{
+      if(isShow){
+        $refs.nav.style.display="block";
+      }else{
+        $refs.nav.style.display="none";
+
+      }
+  })
+},
+};
 </script>
 
 
