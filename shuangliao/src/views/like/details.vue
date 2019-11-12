@@ -9,7 +9,11 @@
         title-active-color="rgba(250, 248, 248, 1)"
         @click-left="onClickLeft"
       >
-        <van-icon name="ellipsis" slot="right" style="color:rgba(250, 248, 248, 1)" />
+        <van-icon
+          name="ellipsis"
+          slot="right"
+          style="color:rgba(250, 248, 248, 1)"
+        />
       </van-nav-bar>
       <img
         src="http://img3.utuku.china.com/650x0/ent/20190605/6b779f7d-1297-4974-a2c4-b15089661d2a.jpg"
@@ -64,23 +68,23 @@
     <div class="getgift">
       <van-cell title="收到的礼物" :border="false" is-link to />
       <div class="gifts">
-          <div class="gift"></div>
-          <div class="gift"></div>
-          <div class="gift"></div>
-          <div class="gift"></div>
+        <div class="gift"></div>
+        <div class="gift"></div>
+        <div class="gift"></div>
+        <div class="gift"></div>
       </div>
     </div>
     <!-- 底部 -->
     <footer>
-        <div class="liwu"></div>
-        <div class="message"></div>
-        <div class="shipin"></div>
+      <div class="liwu"></div>
+      <div class="message"></div>
+      <div class="shipin"></div>
     </footer>
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import eventbus from '../../eventbus'
+import Vue from "vue";
+import eventbus from "../../eventbus";
 export default {
   methods: {
     onClickLeft() {
@@ -91,8 +95,8 @@ export default {
     }
   },
   mounted() {
-      eventbus.$emit('showFooter',false)
-  },
+    eventbus.$emit("showFooter", false);
+  }
 };
 // mounted ()   this.$route.params.id
 </script>
@@ -251,31 +255,30 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.gift{
-    width: 75px;
+.gift {
+  width: 75px;
   height: 75px;
   border-radius: 50%;
   background: #fe4d68;
 }
-footer{
-    width: 100%;
-    height: 50px;
-    background: pink;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-
+footer {
+  width: 100%;
+  height: 50px;
+  background: pink;
+  position: fixed;
+  bottom: 0;
+  display: flex;
 }
-.liwu{
-    flex: 1;
-    background: pink;
+.liwu {
+  flex: 1;
+  background: pink;
 }
-.message{
-    flex: 1;
-    background: blue;
+.message {
+  flex: 1;
+  background: blue;
 }
-.shipin{
-    flex: 2;
-    background: purple;
+.shipin {
+  flex: 2;
+  background: purple;
 }
 </style>

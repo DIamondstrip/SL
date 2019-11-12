@@ -24,11 +24,15 @@
   </div>
 </template>
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 
 export default {
   components: {
     Test
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>
