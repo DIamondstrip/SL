@@ -12,19 +12,30 @@
             <!-- <span class="sex"></span> -->
           </p>
           <p class="ID">ID:2589484</p>
-          <p class="autograph">签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD</p>
-          <span class="guanzhu" style="margin-left: 0;">
-            关注 &nbsp;
-            <i class="inum">26</i>
-          </span>
-          <span class="guanzhu">
-            粉丝 &nbsp;
-            <i class="inum">26</i>
-          </span>
-          <span class="guanzhu">
-            来访 &nbsp;
-            <i class="inum">26</i>
-          </span>
+          <p class="autograph">
+            签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD
+          </p>
+          <!-- 关注（点击跳转） -->
+          <router-link to="/attFans/attention">
+            <span class="guanzhu" style="margin-left: 0;">
+              关注 &nbsp;
+              <i class="inum">26</i>
+            </span>
+          </router-link>
+          <!-- 粉丝（点击跳转） -->
+          <router-link to="/attFans/fans">
+            <span class="guanzhu">
+              粉丝 &nbsp;
+              <i class="inum">26</i>
+            </span>
+          </router-link>
+          <!-- 来访（点击跳转） -->
+          <router-link to="/laifang">
+            <span class="guanzhu">
+              来访 &nbsp;
+              <i class="inum">26</i>
+            </span>
+          </router-link>
         </div>
         <div class="xinxi-you">
           <div class="HeadPortrait"></div>
@@ -39,14 +50,36 @@
     </section>
     <section class="account">
       <div class="zhanghu">
-        <van-button color="linear-gradient(to right, #fe4d68, #ff8a5f)" round size="normal">
-          <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
-          我的账户 ：26
-        </van-button>
-        <van-button color="linear-gradient(to right, #2b6ada, #32a6fd)" round size="normal">
-          <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
-          我的金币 ：26
-        </van-button>
+        <!-- 我的账户（点击跳转） -->
+        <router-link to="/myaccount">
+          <van-button
+            color="linear-gradient(to right, #fe4d68, #ff8a5f)"
+            round
+            size="normal"
+          >
+            <i
+              class="fa fa-credit-card-alt"
+              aria-hidden="true"
+              style="margin-right:10px"
+            ></i>
+            我的账户 ：26
+          </van-button>
+        </router-link>
+        <!-- 我的金币（点击跳转） -->
+        <router-link to="/mycoins">
+          <van-button
+            color="linear-gradient(to right, #2b6ada, #32a6fd)"
+            round
+            size="normal"
+          >
+            <i
+              class="fa fa-money"
+              aria-hidden="true"
+              style="margin-right:10px"
+            ></i>
+            我的金币 ：26
+          </van-button>
+        </router-link>
       </div>
     </section>
     <section class="gift">
@@ -117,8 +150,6 @@
           </div>
         </div>
       </div>
-
-      
     </section>
   </div>
 </template>

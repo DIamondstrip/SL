@@ -22,7 +22,7 @@
       <button class="all">全提</button>
     </div>
     <div class="buttons">
-      <router-link to="/details">
+      <router-link to="/Withdraw">
         <button>立即提现</button>
       </router-link>
       <br />

@@ -71,11 +71,14 @@ import Test from "../../components/Test";
 export default {
   data() {
     return {
-      activeName: "attention"
+      activeName: ""
     };
   },
   components: {
     Test
+  },
+  created() {
+    this.activeName = this.$route.params.fansName;
   }
 };
 </script>

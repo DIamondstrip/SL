@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: Friend
-  }, 
-  {
-    path:'/search',
-    component:Search
   },
   {
-    path:'/details',
+    path: '/search',
+    component: Search
+  },
+  {
+    path: '/details',
     component: () => import('../views/like/details.vue')
   },
   {
@@ -27,7 +27,7 @@ const routes = [{
   }, {
     path: '/tonghua',
     component: () => import('../views/message/tonghua.vue')
-  },{
+  }, {
     path: '/laifang',
     component: () => import('../views/message/laifang.vue')
   },
@@ -61,8 +61,8 @@ const routes = [{
     component: () => import('../views/mine/attFans.vue')
   },
   {
-    path: '/details',
-    component: () => import('../views/mine/details.vue')
+    path: '/withdraw',
+    component: () => import('../views/mine/Withdraw.vue')
   },
   {
     path: '/myaccount',
