@@ -22,6 +22,9 @@ const routes = [{
   }, {
     path: '/tonghua',
     component: () => import('../views/message/tonghua.vue')
+  },{
+    path: '/laifang',
+    component: () => import('../views/message/laifang.vue')
   },
   {
     path: '/mine',
