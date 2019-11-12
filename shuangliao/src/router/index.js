@@ -53,13 +53,25 @@ const routes = [{
     component: () => import('../views/mine/blackList.vue')
   },
   {
-    path: '/getGift',
-    component: () => import('../views/mine/getGift.vue')
+    path: '/myGift/:giftName',
+    component: () => import('../views/mine/myGift.vue')
   },
   {
-    path: '/sendGift',
-    component: () => import('../views/mine/sendGift.vue')
-  }
+    path: '/attFans/:fansName',
+    component: () => import('../views/mine/attFans.vue')
+  },
+  {
+    path: '/details',
+    component: () => import('../views/mine/details.vue')
+  },
+  {
+    path: '/myaccount',
+    component: () => import('../views/mine/myaccount.vue')
+  },
+  {
+    path: '/mycoins',
+    component: () => import('../views/mine/mycoins.vue')
+  },
 ]
 
 const router = new VueRouter({

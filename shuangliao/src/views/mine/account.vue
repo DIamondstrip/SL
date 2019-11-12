@@ -1,36 +1,44 @@
 <template>
-  <div class="account">
-    <div class="account-name">
-      <p>真实姓名：</p>
-      <input type="text" placeholder="请输入真实姓名" />
-    </div>
-    <div class="account-zfb">
-      <p>支付宝账号：</p>
-      <input type="text" placeholder="填写支付宝账号" />
-      <button>保存</button>
-    </div>
-    <div class="account-msg">
-      <p>注意事项：</p>
-      <p>1. 请认真核对您的个人信息以及绑定的收款账户，请务必确认所填信息真实有效</p>
-      <p>2. 如因您填写的账户有误而出现问题，后果均由您本人承担</p>
+  <div>
+    <Test>账号信息</Test>
+    <div class="account">
+      <div class="account-name">
+        <p>真实姓名：</p>
+        <input type="text" placeholder="请输入真实姓名" />
+      </div>
+      <div class="account-zfb">
+        <p>支付宝账号：</p>
+        <input type="text" placeholder="填写支付宝账号" />
+        <button>保存</button>
+      </div>
+      <div class="account-msg">
+        <p>注意事项：</p>
+        <p>1. 请认真核对您的个人信息以及绑定的收款账户，请务必确认所填信息真实有效</p>
+        <p>2. 如因您填写的账户有误而出现问题，后果均由您本人承担</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Test from "../../components/Test";
 export default {
   name: "account",
   data() {
     return {};
   },
   methods: {},
-  computed: {}
+  computed: {},
+  components: {
+    Test
+  }
 };
 </script>
 
 <style scoped>
 .account {
   padding: 20px;
+  margin-top: -20px;
 }
 .account-name p {
   color: #1a1a1a;
@@ -48,7 +56,7 @@ export default {
   background: #f2f2f2;
   border: none;
   font-size: 16px;
-  padding: 22px;
+  padding: 20px;
   border-radius: 5px;
 }
 .account button {
