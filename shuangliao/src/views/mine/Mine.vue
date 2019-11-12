@@ -50,58 +50,53 @@
       </div>
     </section>
     <section class="gift">
-<div class="mygift">
-    <span>我的礼物</span>
-    <span>&gt;</span>
-</div>
+      <div class="mygift">
+        <span>我的礼物</span>
+        <span>&gt;</span>
+      </div>
 
-<div class="gifts">
-  <router-link to="/getGift">
-    <a href="javascript:;" class="getgift">
-        <van-icon name="balance-o" />
-        收到的礼物：
-        <span style="font-weight:600">26</span>
-    </a>
-  </router-link>
-    <router-link to="sengGift">
-<a href="javascript:;" class="putgift">
-        <van-icon name="refund-o" />
-        送出的礼物：
-        <span style="font-weight:600">26</span>
-    </a>
-    </router-link>
-    
-</div>
-
+      <div class="gifts">
+        <router-link to="/myGift/getGift">
+          <a href="javascript:;" class="getgift">
+            <van-icon name="balance-o" />收到的礼物：
+            <span style="font-weight:600">26</span>
+          </a>
+        </router-link>
+        <router-link to="/myGift/putGift">
+          <a href="javascript:;" class="putgift">
+            <van-icon name="refund-o" />送出的礼物：
+            <span style="font-weight:600">26</span>
+          </a>
+        </router-link>
+      </div>
     </section>
     <section class="bottom">
       <div class="bottomul">
         <div class="Dli">
           <router-link to="/idCard">
-             <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">证件上传</p>
-          </div>
-          </router-link>
-         <router-link to="/account">
-             <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">账号安全</p>
-          </div>
-         </router-link>
-        <router-link to="/photo">
-           <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">个人相册</p>
-          </div>
-        </router-link>
-         <router-link to="blackList">
             <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">黑名单</p>
-          </div>
-         </router-link>
-         
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">证件上传</p>
+            </div>
+          </router-link>
+          <router-link to="/account">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">账号安全</p>
+            </div>
+          </router-link>
+          <router-link to="/photo">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">个人相册</p>
+            </div>
+          </router-link>
+          <router-link to="blackList">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">黑名单</p>
+            </div>
+          </router-link>
         </div>
         <div class="Dli">
           <div class="xq">
@@ -174,40 +169,39 @@ export default {
   align-items: center;
 }
 
-.mygift{
-    width: 343px;
-    height: 22px;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
+.mygift {
+  width: 343px;
+  height: 22px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
 }
-.gifts{
-    width: 343px;
-    height: 55px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    background: #f2f2f2;
+.gifts {
+  width: 343px;
+  height: 55px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: #f2f2f2;
 }
-.getgift{
-    display: inline-block;
-    font-size: 16px;
-    color: black;
+.getgift {
+  display: inline-block;
+  font-size: 16px;
+  color: black;
 }
-.putgift{
-    display: inline-block;
-    font-size: 16px;
-    color: black;
+.putgift {
+  display: inline-block;
+  font-size: 16px;
+  color: black;
 }
 .bottom {
   width: 100%;
   height: 250px;
   display: flex;
   justify-content: center;
-  
 }
 
 .renzheng {
