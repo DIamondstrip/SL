@@ -8,32 +8,74 @@
             <li class="title">交友</li>
             <li class="isex">只看异性</li>
         </div>
-        <van-tabs style="posi" v-model="active" :offset-top=50 sticky>
+        <van-tabs style="posi" v-model="active" :offset-top="50" sticky>
             <van-tab title="红人" class="hongren">
-                <img
+                <!-- <img
                     src="http://img5.imgtn.bdimg.com/it/u=1896971167,2172042544&fm=26&gp=0.jpg"
                     alt
                     class="tpic"
-                />
+                />-->
+                <van-swipe :autoplay="3000" indicator-color="white">
+                    <van-swipe-item>
+                        <img
+                            src="http://img4.imgtn.bdimg.com/it/u=554524385,3117980747&fm=26&gp=0.jpg"
+                            alt
+                            class="tpic"
+                        />
+                    </van-swipe-item>
+                    <van-swipe-item>
+                         <img
+                            src="http://img3.imgtn.bdimg.com/it/u=3270093658,3792012375&fm=11&gp=0.jpg"
+                            alt
+                            class="tpic"
+                        />
+                    </van-swipe-item>
+                    <van-swipe-item>
+                        <img
+                            src="http://img3.imgtn.bdimg.com/it/u=167574130,2350013027&fm=26&gp=0.jpg"
+                            alt
+                            class="tpic"
+                        />
+                    </van-swipe-item>
+                    <van-swipe-item>
+                         <img
+                            src="http://img1.imgtn.bdimg.com/it/u=2723952473,3479651652&fm=26&gp=0.jpg"
+                            alt
+                            class="tpic"
+                        />
+                    </van-swipe-item>
+                    <van-swipe-item>
+                         <img
+                            src="http://img4.imgtn.bdimg.com/it/u=2455744093,1174321665&fm=26&gp=0.jpg"
+                            alt
+                            class="tpic"
+                        />
+                    </van-swipe-item>
+
+                </van-swipe>
                 <ul class="content">
                     <li>
-                        <img
-                            src="http://img5.imgtn.bdimg.com/it/u=2827627847,3828691354&fm=26&gp=0.jpg"
-                            alt
-                        />
-                        <div class="mask">
-                            <p>
-                                <span>username</span>
-                                <span class="sex">
-                                    <i class="fa fa-mars" aria-hidden="true"></i>
-                                    <em class="age">23</em>
-                                    <!-- <i class="fa fa-venus" aria-hidden="true"></i> -->
-                                </span>
-                                <br />
-                                <em>测试文体测试文体测试文体</em>
-                            </p>
-                        </div>
+                        <!-- :to="'/details/'+item.id'" 传递数据给详情页 -->
+                        <router-link to="/details">
+                            <img
+                                src="http://img5.imgtn.bdimg.com/it/u=2827627847,3828691354&fm=26&gp=0.jpg"
+                                alt
+                            />
+                            <div class="mask">
+                                <p>
+                                    <span>username</span>
+                                    <span class="sex">
+                                        <i class="fa fa-mars" aria-hidden="true"></i>
+                                        <em class="age">23</em>
+                                        <!-- <i class="fa fa-venus" aria-hidden="true"></i> -->
+                                    </span>
+                                    <br />
+                                    <em>测试文体测试文体测试文体</em>
+                                </p>
+                            </div>
+                        </router-link>
                     </li>
+
                     <li>
                         <img
                             src="http://img0.imgtn.bdimg.com/it/u=452966427,3842240659&fm=26&gp=0.jpg"

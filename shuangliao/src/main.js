@@ -14,8 +14,6 @@ import './assets/css/reset.css'
 //vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
-
 Vue.use(Vant);
 
 Vue.config.productionTip = false

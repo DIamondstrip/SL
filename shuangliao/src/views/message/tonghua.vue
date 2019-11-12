@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import Test from '../../components/Test'
 import eventbus from '../../eventbus'
 
