@@ -23,11 +23,15 @@
 </template>
 
 <script>
+import eventbus from '../../eventbus'
 export default {
   methods: {
       touch(){
          this.$router.push({ path: '/tongzhi' }) 
       }
+  },
+   mounted() {
+    eventbus.$emit('showFooter',true)
   },
 }
 </script>
