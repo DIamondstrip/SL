@@ -3,16 +3,17 @@ import VueRouter from 'vue-router'
 import Friend from '../views/like/Friend'
 import Message from '../views/message/Message'
 import Mine from '../views/mine/Mine'
+import Search from '../views/like/Search'
 Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
     component: Friend
   }, 
-  // {
-  //   path:'/search',
-  //   component:Search
-  // },
+  {
+    path:'/search',
+    component:Search
+  },
   {
     path:'/details',
     component: () => import('../views/like/details.vue')
@@ -27,6 +28,7 @@ const routes = [{
     path: '/tonghua',
     component: () => import('../views/message/tonghua.vue')
   },
+
   {
     path: '/mine',
     component: Mine

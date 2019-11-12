@@ -9,13 +9,11 @@
         <router-link to="/message">
         <i class="fa fa-comment-o" aria-hidden="true"></i>
         </router-link>
-      
     </div>
     <div>
         <router-link to="/mine">
          <i class="fa fa-user-o" aria-hidden="true"></i>
          </router-link>
-     
     </div>
   </div>
 </template>

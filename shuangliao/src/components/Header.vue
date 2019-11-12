@@ -1,8 +1,8 @@
 <template>
-<div>
-<li class="fa fa-search" aria-hidden="true"></li>
-<li class="title">{{title}}</li>
-<li class="isex">只看异性</li>
+<div class="haeder">
+  <li class="fa fa-search" aria-hidden="true"></li>
+  <li class="title">{{title}}</li>
+  <li class="isex">只看异性</li>
 </div>
 </template>
 
@@ -18,13 +18,12 @@ export default {
 
 
 <style scoped>
-div{
+.haeder{
   width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 li {
   font-size: 20px;

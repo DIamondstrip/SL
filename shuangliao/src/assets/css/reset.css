@@ -66,7 +66,7 @@ body, div, ul, li, ol, h1, h2, h3, h4, h5, h6, input, textarea, select, p, dl, d
 body {
   font: 12px/1.5 'Microsoft YaHei','宋体', Tahoma, Arial, sans-serif;
   color: #555;
-  //background-color: #fff;
+  background-color: #fff;
 }
 em, i {
   font-style: normal;
@@ -160,6 +160,7 @@ a:link,a:active,a:visited,a:hover {
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
 }
+
 
 /* .fade-leave-active in <2.1.8 */
 .fade-enter, .fade-leave-to {
