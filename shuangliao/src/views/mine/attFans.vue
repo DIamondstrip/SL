@@ -33,7 +33,7 @@
         </div>
       </van-tab>
 
-      <van-tab title="粉丝" name="b">
+      <van-tab title="粉丝" name="fans">
         <div class="container">
           <img />
           <div class="names">
