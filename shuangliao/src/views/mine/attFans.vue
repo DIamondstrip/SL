@@ -67,6 +67,7 @@
   </div>
 </template>
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   data() {
@@ -79,6 +80,9 @@ export default {
   },
   created() {
     this.activeName = this.$route.params.fansName;
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>
