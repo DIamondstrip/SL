@@ -132,6 +132,7 @@
 </template>
 
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   name: "sendGift",
@@ -144,6 +145,9 @@ export default {
   created() {
     this.activeName = this.$route.params.giftName;
   },
+  mounted() {
+    eventbus.$emit("showFooter", false);
+  },
   computed: {},
   components: {
     Test
@@ -151,7 +155,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped>
 hr {
   margin: 0;
 }

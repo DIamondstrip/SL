@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   name: "idCard",
@@ -43,6 +44,9 @@ export default {
   computed: {},
   components: {
     Test
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>

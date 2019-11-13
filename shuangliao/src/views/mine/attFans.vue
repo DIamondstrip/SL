@@ -33,7 +33,7 @@
         </div>
       </van-tab>
 
-      <van-tab title="粉丝" name="b">
+      <van-tab title="粉丝" name="fans">
         <div class="container">
           <img />
           <div class="names">
@@ -67,15 +67,22 @@
   </div>
 </template>
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   data() {
     return {
-      activeName: "attention"
+      activeName: ""
     };
   },
   components: {
     Test
+  },
+  created() {
+    this.activeName = this.$route.params.fansName;
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>

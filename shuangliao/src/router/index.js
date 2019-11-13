@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: Friend
-  }, 
-  {
-    path:'/search',
-    component:Search
   },
   {
-    path:'/details',
+    path: '/search',
+    component: Search
+  },
+  {
+    path: '/details', //path:'/details/:id' 通过id传参,在mounted钩子函数中获取对应的数据
     component: () => import('../views/like/details.vue')
   },
   {
@@ -27,7 +27,7 @@ const routes = [{
   }, {
     path: '/tonghua',
     component: () => import('../views/message/tonghua.vue')
-  },{
+  }, {
     path: '/laifang',
     component: () => import('../views/message/laifang.vue')
   },
@@ -61,8 +61,8 @@ const routes = [{
     component: () => import('../views/mine/attFans.vue')
   },
   {
-    path: '/details',
-    component: () => import('../views/mine/details.vue')
+    path: '/withdraw',
+    component: () => import('../views/mine/Withdraw.vue')
   },
   {
     path: '/myaccount',
@@ -72,6 +72,30 @@ const routes = [{
     path: '/mycoins',
     component: () => import('../views/mine/mycoins.vue')
   },
+  {
+    path:'/editdata',
+    component: () => import('../views/mine/Editdata.vue')
+  },
+  {
+    path:'/editdataname',
+    component: () => import('../views/mine/Editdataname.vue')
+  },
+  {
+    path:'/ownset',
+    component: () => import('../views/mine/ownset.vue')
+  },
+  {
+    path:'/bindu',
+    component: () => import('../views/mine/bindu.vue')
+  },
+  {
+    path:'/aboutus',
+    component: () => import('../views/mine/aboutus.vue')
+  },
+  {
+    path:'/usuproblem',
+    component: () => import('../views/mine/usuproblem.vue')
+  }
 ]
 
 const router = new VueRouter({

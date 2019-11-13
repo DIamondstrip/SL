@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   name: "photo",
@@ -44,6 +45,9 @@ export default {
       this.fileList2.push({ url: "file.content", isImage: true });
     }
   },
+  mounted() {
+    eventbus.$emit("showFooter", false);
+  },
   computed: {},
   components: {
     Test
@@ -51,7 +55,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped>
 .upload {
   width: 100%;
   display: flex;
