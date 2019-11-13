@@ -142,7 +142,7 @@ export default {
   },
   methods: {},
   created() {
-    this.activeName = this.$route.params.name;
+    this.activeName = this.$route.params.giftName;
   },
   computed: {},
   components: {
