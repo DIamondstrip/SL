@@ -132,18 +132,24 @@
           </router-link>
         </div>
         <div class="Dli">
+           <router-link to="ownset">
           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">设置</p>
           </div>
-          <div class="xq">
+          </router-link>
+          <router-link to="Editdata">
+             <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">编辑资料</p>
           </div>
+          </router-link>
+         <router-link to="usuproblem">
           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">常见问题</p>
           </div>
+            </router-link>
           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">分享</p>
@@ -154,11 +160,18 @@
   </div>
 </template>
 <script>
+// 阻塞最下面tab栏
+import eventbus from '../../eventbus'
+
 export default {
   data() {
     return {
       checked: true
     };
+  },
+  // 阻塞最下面tab栏
+  mounted() {
+    eventbus.$emit('showFooter',true)
   }
 };
 </script>
