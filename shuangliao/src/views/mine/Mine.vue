@@ -7,38 +7,38 @@
       <div class="xinxi">
         <div class="xinxi-zuo">
           <p class="name">
-            momomo
-            <span class="sex">26</span>
+            {{items.user.nickname}}
+            <span class="sex">{{items.user.age}}</span>
             <!-- <span class="sex"></span> -->
           </p>
-          <p class="ID">ID:2589484</p>
-          <p class="autograph">
-            签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD
-          </p>
+          <p class="ID">ID:{{items.user.uid}}</p>
+          <p class="autograph">{{items.user.about_me}}</p>
           <!-- 关注（点击跳转） -->
           <router-link to="/attFans/attention">
             <span class="guanzhu" style="margin-left: 0;">
               关注 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{items.user.gz_count}}</i>
             </span>
           </router-link>
           <!-- 粉丝（点击跳转） -->
           <router-link to="/attFans/fans">
             <span class="guanzhu">
               粉丝 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{items.user.star_count}}</i>
             </span>
           </router-link>
           <!-- 来访（点击跳转） -->
           <router-link to="/laifang">
             <span class="guanzhu">
               来访 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{items.user.visitor_count}}</i>
             </span>
           </router-link>
         </div>
         <div class="xinxi-you">
-          <div class="HeadPortrait"></div>
+          <!-- <div class="HeadPortrait"> -->
+          <van-image round width="81px" height="81px" :src="items.user.head_url" />
+          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -55,14 +55,11 @@
           <van-button
             color="linear-gradient(to right, #fe4d68, #ff8a5f)"
             round
+            style="font-size:14px"
             size="normal"
           >
-            <i
-              class="fa fa-credit-card-alt"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
-            我的账户 ：26
+            <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
+            我的账户 ：{{items.user.get_corn}}
           </van-button>
         </router-link>
         <!-- 我的金币（点击跳转） -->
@@ -71,13 +68,10 @@
             color="linear-gradient(to right, #2b6ada, #32a6fd)"
             round
             size="normal"
+            style="font-size:14px"
           >
-            <i
-              class="fa fa-money"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
-            我的金币 ：26
+            <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
+            我的金币 ：{{items.user.get_corn}}
           </van-button>
         </router-link>
       </div>
@@ -92,13 +86,13 @@
         <router-link to="/myGift/getGift">
           <a href="javascript:;" class="getgift">
             <van-icon name="balance-o" />收到的礼物：
-            <span style="font-weight:600">26</span>
+            <span style="font-weight:600">{{items.user.get_gift_count}}</span>
           </a>
         </router-link>
         <router-link to="/myGift/putGift">
           <a href="javascript:;" class="putgift">
             <van-icon name="refund-o" />送出的礼物：
-            <span style="font-weight:600">26</span>
+            <span style="font-weight:600">{{items.user.give_gift_count}}</span>
           </a>
         </router-link>
       </div>
@@ -132,24 +126,24 @@
           </router-link>
         </div>
         <div class="Dli">
-           <router-link to="ownset">
-          <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">设置</p>
-          </div>
+          <router-link to="ownset">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">设置</p>
+            </div>
           </router-link>
           <router-link to="Editdata">
-             <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">编辑资料</p>
-          </div>
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">编辑资料</p>
+            </div>
           </router-link>
-         <router-link to="usuproblem">
-          <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">常见问题</p>
-          </div>
-            </router-link>
+          <router-link to="usuproblem">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">常见问题</p>
+            </div>
+          </router-link>
           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">分享</p>
@@ -161,17 +155,90 @@
 </template>
 <script>
 // 阻塞最下面tab栏
-import eventbus from '../../eventbus'
+import eventbus from "../../eventbus";
 
 export default {
   data() {
     return {
-      checked: true
+      checked: true,
+
+      items: {
+        user: {
+          uid: 10010006,
+          head_url:
+            "https://liaomeiapp.oss-cn-shanghai.aliyuncs.com/2018-01-12/2437e721897fede4d28fe9e6e7ed382f.jpg",
+          status: 2,
+          is_video: 1,
+          is_video_authentication: 1,
+          nickname: "嘟嘟不嘟脸",
+          about_me:
+            "签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD",
+          gender: 2,
+          age: 26,
+          birthday: "1992-02-01",
+          city: "杭州",
+          video_corn_price: 500,
+          is_auth: 0,
+          credit: 0,
+          constellation: "",
+          status_base: 0,
+          is_majia: 0,
+          capacity: "等我,等你,等他",
+          state: "",
+          quality: "",
+          game: "",
+          nature: "",
+          like: "爱我,爱你,爱他",
+          preference: "",
+          head_url_status: 1,
+          city_two: "浙江-杭州",
+          star_count: 2,
+          gz_count: 1,
+          visitor_count: 6,
+          get_corn: 343110,
+          corn: 0,
+          get_gift_count: 102,
+          give_gift_count: 40,
+          call_video_price_start: "200",
+          call_video_price_end: "500",
+          is_rz: 1,
+          is_privilege: 0
+        },
+        user_withdrawal: {
+          uid: 10010006,
+          withdrawal_account: "labman00629",
+          withdrawal_name: "时代大厦"
+        },
+        xianliaourl: "http://m.travelbaby.cn/Lm/pay?uid=10010006",
+        convention_pic_url:
+          "http://htef3bvmquzmmr67.oss-cn-hangzhou.aliyuncs.com/2018-03-01/2b45b2999f42df2aa3bf5003ea059e7c.png",
+        video: {
+          id: 18,
+          uid: 10010006,
+          url:
+            "https://liaomeiapp.oss-cn-shanghai.aliyuncs.com/2018-01-14/d2fa93a48d1730849b334f4dd9883ffa.mp4",
+          status: 1,
+          created: "2018-01-14 15:30:55",
+          updated: "2018-01-15 15:12:13",
+          pic: "",
+          video_pic_url: ""
+        }
+      },
+      err: 0,
+      msg: "",
+      server_time: "2019-07-02 16:36:21"
     };
   },
   // 阻塞最下面tab栏
   mounted() {
-    eventbus.$emit('showFooter',true)
+    eventbus.$emit("showFooter", true);
+    this.$axios.post("/register")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>
