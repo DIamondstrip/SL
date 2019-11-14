@@ -15,8 +15,12 @@ const routes = [{
     component:Search
   },
   {
-    path:'/details',//path:'/details/:id' 通过id传参,在mounted钩子函数中获取对应的数据
+    path:'/details/:id',//path:'/details/:id' 通过id传参,在mounted钩子函数中获取对应的数据
     component: () => import('../views/like/details.vue')
+  },
+  {
+    path:'/photoalbum',//相册, 详情页跳转过来
+    component:()=>import('../views/like/Photoalbum.vue')
   },
   {
     path: '/message',
