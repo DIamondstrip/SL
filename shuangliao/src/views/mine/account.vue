@@ -13,7 +13,10 @@
       </div>
       <div class="account-msg">
         <p>注意事项：</p>
-        <p>1. 请认真核对您的个人信息以及绑定的收款账户，请务必确认所填信息真实有效</p>
+        <p>
+          1.
+          请认真核对您的个人信息以及绑定的收款账户，请务必确认所填信息真实有效
+        </p>
         <p>2. 如因您填写的账户有误而出现问题，后果均由您本人承担</p>
       </div>
     </div>
@@ -21,6 +24,7 @@
 </template>
 
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   name: "account",
@@ -31,11 +35,14 @@ export default {
   computed: {},
   components: {
     Test
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>
 
-<style scoped>
+<style scoped>
 .account {
   padding: 20px;
   margin-top: -20px;

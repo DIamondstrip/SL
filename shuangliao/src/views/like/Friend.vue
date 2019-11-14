@@ -1,9 +1,9 @@
 <template>
-    <div class="friend">
-        <div class="header">
-            <router-link to="/search">
-                <li class="fa fa-search" aria-hidden="true" @click="search"></li>
-            </router-link>
+  <div class="friend">
+    <div class="header">
+      <router-link to="/search">
+        <li class="fa fa-search" aria-hidden="true" @click="search"></li>
+      </router-link>
 
             <li class="title">交友</li>
             <li class="isex">只看异性</li>
@@ -238,9 +238,9 @@ export default {
             this.$router.push({ path: "/search" });
         }
     },
-    mounted() {
-        eventbus.$emit('showFooter',true);
-    }
+  mounted() {
+    eventbus.$emit("showFooter", true);
+  }
 };
 </script>
 <style scoped>
@@ -251,20 +251,20 @@ export default {
     background: palevioletred;
 }
 .header {
-    position: fixed;
-    top: 0;
-    height: 50px;
-    background: white;
-    overflow: hidden;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  background: white;
+  overflow: hidden;
+  z-index: 1;
 }
 .header li {
-    font-size: 20px;
-    float: left;
-    margin: 10px 20px;
+  font-size: 20px;
+  float: left;
+  margin: 10px 20px;
 }
 .header .title {
-    margin: 10px 50px 10px 105px;
+  margin: 10px 50px 10px 105px;
 }
 
 .header .isex {
@@ -277,34 +277,34 @@ export default {
     width: 80px;
 }
 .friend {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 .hongren .tpic {
-    width: 100%;
-    height: 150px;
-    display: block;
+  width: 100%;
+  height: 150px;
+  display: block;
 }
 .hongren .content {
-    overflow: hidden;
+  overflow: hidden;
 }
 .hongren .content li {
-    width: 50%;
-    height: 250px;
-    float: left;
-    position: relative;
+  width: 50%;
+  height: 250px;
+  float: left;
+  position: relative;
 }
 .hongren .content img {
-    width: 100%;
-    height: 100%;
-    display: block;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .content .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
 }
 .hongren .content p {
     font-size: 16px;
@@ -332,11 +332,11 @@ export default {
     font-size: 12px;
 }
 .van-tabs--line .van-tabs__wrap {
-    height: 1.17333rem;
-    width: 100%;
-    position: fixed;
+  height: 1.17333rem;
+  width: 100%;
+  position: fixed;
 }
 .van-tabs {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 </style>

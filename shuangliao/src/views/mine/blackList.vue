@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import eventbus from "../../eventbus";
 import Test from "../../components/Test";
 export default {
   name: "blackList",
@@ -38,11 +39,14 @@ export default {
   computed: {},
   components: {
     Test
+  },
+  mounted() {
+    eventbus.$emit("showFooter", false);
   }
 };
 </script>
 
-<style scoped>
+<style scoped>
 .blackList {
   padding: 20px;
 }
