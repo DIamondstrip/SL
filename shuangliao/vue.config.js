@@ -2,8 +2,8 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 
 module.exports = {
-     // 服务端代理，解决跨域
-     devServer: {
+    // 服务端代理，解决跨域
+    devServer: {
         proxy: {
             '/sms': {
                 target: 'http://fgserver.top',//代理的接口域名
@@ -17,7 +17,6 @@ module.exports = {
             }
         }
     },
-
     css: {
         loaderOptions: {
             postcss: {
