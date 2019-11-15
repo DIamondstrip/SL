@@ -7,36 +7,39 @@
       <div class="xinxi">
         <div class="xinxi-zuo">
           <p class="name">
-            momomo
-            <span class="sex">26</span>
+            {{ Mdata.nick }}
+            <span class="sex">{{ Mdata.sex }}</span>
             <!-- <span class="sex"></span> -->
           </p>
-          <p class="ID">ID:2589484</p>
-          <p class="autograph">签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD</p>
+
+          <p class="ID">ID:{{ Mdata.uid }}</p>
+          <p class="autograph">{{ Mdata.autograph }}</p>
           <!-- 关注（点击跳转） -->
           <router-link to="/attFans/attention">
             <span class="guanzhu" style="margin-left: 0;">
               关注 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{ Mdata.follow }}</i>
             </span>
           </router-link>
           <!-- 粉丝（点击跳转） -->
           <router-link to="/attFans/fans">
             <span class="guanzhu">
               粉丝 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{ Mdata.fans }}</i>
             </span>
           </router-link>
           <!-- 来访（点击跳转） -->
           <router-link to="/laifang">
             <span class="guanzhu">
               来访 &nbsp;
-              <i class="inum">26</i>
+              <i class="inum">{{ Mdata.visitor }}</i>
             </span>
           </router-link>
         </div>
         <div class="xinxi-you">
-          <div class="HeadPortrait"></div>
+          <!-- <div class="HeadPortrait"> -->
+          <van-image round width="81px" height="81px" :src="Mdata.avatar" />
+          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -50,16 +53,34 @@
       <div class="zhanghu">
         <!-- 我的账户（点击跳转） -->
         <router-link to="/myaccount">
-          <van-button color="linear-gradient(to right, #fe4d68, #ff8a5f)" round size="normal">
-            <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
-            我的账户 ：26
+          <van-button
+            color="linear-gradient(to right, #fe4d68, #ff8a5f)"
+            round
+            style="font-size:14px"
+            size="normal"
+          >
+            <i
+              class="fa fa-credit-card-alt"
+              aria-hidden="true"
+              style="margin-right:10px"
+            ></i>
+            我的账户 ：{{ Mdata.uPrice }}
           </van-button>
         </router-link>
         <!-- 我的金币（点击跳转） -->
         <router-link to="/mycoins">
-          <van-button color="linear-gradient(to right, #2b6ada, #32a6fd)" round size="normal">
-            <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
-            我的金币 ：26
+          <van-button
+            color="linear-gradient(to right, #2b6ada, #32a6fd)"
+            round
+            size="normal"
+            style="font-size:14px"
+          >
+            <i
+              class="fa fa-money"
+              aria-hidden="true"
+              style="margin-right:10px"
+            ></i>
+            我的金币 ：{{ Mdata.goldCoin }}
           </van-button>
         </router-link>
       </div>
@@ -74,13 +95,13 @@
         <router-link to="/myGift/getGift">
           <a href="javascript:;" class="getgift">
             <van-icon name="balance-o" />收到的礼物：
-            <span style="font-weight:600">26</span>
+            <span style="font-weight:600"></span>
           </a>
         </router-link>
         <router-link to="/myGift/putGift">
           <a href="javascript:;" class="putgift">
             <van-icon name="refund-o" />送出的礼物：
-            <span style="font-weight:600">26</span>
+            <span style="font-weight:600"></span>
           </a>
         </router-link>
       </div>
@@ -114,18 +135,24 @@
           </router-link>
         </div>
         <div class="Dli">
-          <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">设置</p>
-          </div>
-          <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">编辑资料</p>
-          </div>
-          <div class="xq">
-            <div class="img"></div>
-            <p style="font-size:10px;text-align:center">常见问题</p>
-          </div>
+          <router-link to="ownset">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">设置</p>
+            </div>
+          </router-link>
+          <router-link to="Editdata">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">编辑资料</p>
+            </div>
+          </router-link>
+          <router-link to="usuproblem">
+            <div class="xq">
+              <div class="img"></div>
+              <p style="font-size:10px;text-align:center">常见问题</p>
+            </div>
+          </router-link>
           <div class="xq">
             <div class="img"></div>
             <p style="font-size:10px;text-align:center">分享</p>
@@ -136,15 +163,47 @@
   </div>
 </template>
 <script>
+// 阻塞最下面tab栏
 import eventbus from "../../eventbus";
 export default {
   data() {
     return {
-      checked: true
+      checked: true,
+      phone: "",
+      Mdata: {},
+      err: 0,
+      msg: "",
+      server_time: "2019-07-02 16:36:21"
     };
   },
+
+  // 阻塞最下面tab栏
   mounted() {
     eventbus.$emit("showFooter", true);
+    this.phone = JSON.parse(window.localStorage.getItem("userInfo")).tel;
+    // this.$axios
+    //   .post("/user/userinfo", "tel=13516783231")
+    //   .then(response => {
+    //     console.log(response.data.data);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
+
+    this.$axios({
+      method: "post",
+      url: "/user/userinfo",
+      data: "tel=13516783231"
+    })
+      .then(response => {
+        this.Mdata = response.data.data;
+        console.log(this.Mdata);
+
+        return this.Mdata;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>

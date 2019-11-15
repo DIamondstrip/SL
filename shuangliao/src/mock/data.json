@@ -1,0 +1,18 @@
+{
+    "items": {
+        "uid": 10010135,
+        "token": "f7deea85bb3e97d4853bcac9d398307c",
+        "gender": 0,
+        "head_url": "",
+        "status": 0,
+        "status_base": 0,
+        "is_majia": 0,
+        "is_video_authentication": 0,
+        "corn": 0,
+        "is_set_password": 0,
+        "phone": 13223974930
+    },
+    "err": 0,
+    "msg": "注册成功",
+    "server_time": "2019-07-02 10:30:22"
+}
