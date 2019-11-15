@@ -218,7 +218,7 @@ export default {
 }
 .photo {
     width: 359px;
-    height: 160px;
+    height: 150px;
     margin-left: 16px;
     display: flex;
     flex-direction: column;
@@ -226,8 +226,7 @@ export default {
     border-bottom: 1px solid #ccc;
 }
 .photomore {
-    /* height: 100%; */
-    /* margin-bottom: 10px; */
+    height: 100%;
     overflow-x: auto;
     white-space: nowrap;
 }
@@ -239,7 +238,6 @@ export default {
     display: inline-block;
     margin-left: 15px;
     margin-top: 15px;
-    /* margin-bottom: 15px; */
 }
 .visit {
     width: 359px;

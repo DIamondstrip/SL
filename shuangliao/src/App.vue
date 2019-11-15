@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import Footer from './components/Footer.vue'
 export default {
   data() {
@@ -28,4 +29,5 @@ export default {
     flex:1;
     height: 100%;
   }
+
 </style>

@@ -58,7 +58,7 @@
             style="font-size:14px"
             size="normal"
           >
-            <!-- <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i> -->
+            <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
             我的账户 ：{{items.user.get_corn}}
           </van-button>
         </router-link>
@@ -70,7 +70,7 @@
             size="normal"
             style="font-size:14px"
           >
-            <!-- <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i> -->
+            <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
             我的金币 ：{{items.user.get_corn}}
           </van-button>
         </router-link>
@@ -232,13 +232,13 @@ export default {
   // 阻塞最下面tab栏
   mounted() {
     eventbus.$emit("showFooter", true);
-    // this.$axios.post("/register")
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+    this.$axios.post("/register")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>
