@@ -99,7 +99,13 @@ const routes = [{
   {
     path:'/usuproblem',
     component: () => import('../views/mine/usuproblem.vue')
+  },
+  {
+    path: '/sex',
+    name: 'sex',
+    component: () => import( /* webpackChunkName: "about" */ '../components/Sex.vue')
   }
+  
 ]
 
 const router = new VueRouter({

@@ -84,8 +84,11 @@ export default {
       active: 2,
       show:false,
       items:[
-          {id:1,name:'aaa',content:'wewqrwqr'},
-          {id:2,name:'bbb',content:'we11111wqr'}
+          {id:1,name:'张泽禹',content:'我是大笨蛋'},
+          {id:2,name:'邵炫齐',content:'对对对'},
+          {id:3,name:'王昕晨',content:'那我加1'},
+          {id:4,name:'吕俊杰',content:'我是小笨蛋'},
+          {id:5,name:'杨涛',content:'吕俊杰小笨蛋'},
       ],
       aaa:{
 
