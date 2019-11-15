@@ -12,9 +12,7 @@
             <!-- <span class="sex"></span> -->
           </p>
           <p class="ID">ID:2589484</p>
-          <p class="autograph">
-            签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD
-          </p>
+          <p class="autograph">签名：现在站在你的面前的是，s8世界总决赛fmvp，2018MSI金牌辅助，s9世界总决赛fmvp的老东家YM战队老板PDD</p>
           <!-- 关注（点击跳转） -->
           <router-link to="/attFans/attention">
             <span class="guanzhu" style="margin-left: 0;">
@@ -52,31 +50,15 @@
       <div class="zhanghu">
         <!-- 我的账户（点击跳转） -->
         <router-link to="/myaccount">
-          <van-button
-            color="linear-gradient(to right, #fe4d68, #ff8a5f)"
-            round
-            size="normal"
-          >
-            <i
-              class="fa fa-credit-card-alt"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
+          <van-button color="linear-gradient(to right, #fe4d68, #ff8a5f)" round size="normal">
+            <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
             我的账户 ：26
           </van-button>
         </router-link>
         <!-- 我的金币（点击跳转） -->
         <router-link to="/mycoins">
-          <van-button
-            color="linear-gradient(to right, #2b6ada, #32a6fd)"
-            round
-            size="normal"
-          >
-            <i
-              class="fa fa-money"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
+          <van-button color="linear-gradient(to right, #2b6ada, #32a6fd)" round size="normal">
+            <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
             我的金币 ：26
           </van-button>
         </router-link>
@@ -154,11 +136,15 @@
   </div>
 </template>
 <script>
+import eventbus from "../../eventbus";
 export default {
   data() {
     return {
       checked: true
     };
+  },
+  mounted() {
+    eventbus.$emit("showFooter", true);
   }
 };
 </script>
