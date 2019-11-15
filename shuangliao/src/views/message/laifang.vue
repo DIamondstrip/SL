@@ -9,7 +9,7 @@
             <!-- tab1 -->
             <van-tab title="来访" class="left">
                 <ul>
-                    <li>
+                    <li @click='comedetails'>
                         <div class="touxiang"></div>
                         <div class="center">
                             <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
@@ -40,7 +40,7 @@
             <!-- tab2 -->
             <van-tab title="去访" class="qufang">
                  <ul>
-                    <li>
+                    <li @click='todetails'>
                         <div class="touxiang"></div>
                         <div class="center">
                             <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
@@ -110,6 +110,12 @@ export default {
         }else{
           Vue.set(this.aaa,item.id,'不同意退款，平台处理中')
         }
+     },
+     todetails(){
+         this.$router.push({path:'/details/id'})
+     },
+     comedetails(){
+         this.$router.push({path:'/details/id'})
      }
   },
   mounted() {
