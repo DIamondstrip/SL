@@ -94,7 +94,7 @@ export default {
 //路由传参推荐参考  https://www.cnblogs.com/zhangruiqi/p/9412539.html
 </script>
 
-<style scope>
+<style scoped>
 .nan,
 .nv {
   width: 92.5px;

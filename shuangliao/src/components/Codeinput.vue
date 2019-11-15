@@ -272,7 +272,7 @@ export default {
 // Vue中用props给data赋初始值遇到的问题解决  https://www.jb51.net/article/151465.htm
 </script>
 
-<style scope>
+<style scoped>
 .main {
   width: 80%;
 }

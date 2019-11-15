@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script scope>
+<script scoped>
 import Test from "./Test";
 // 引入axios
 // import axios from './axios' 报错
