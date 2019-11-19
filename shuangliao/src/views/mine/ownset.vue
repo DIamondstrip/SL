@@ -6,7 +6,7 @@
      <li class="beauty">美颜效果<span><button>&gt;</button></span></li>
      <li class="about_us">关于我们<span><button  @click='aboutus_click()'>&gt;</button></span></li>
      <li class="clear_cache">清理缓存<span><button>?M立即清理</button></span></li>
-     <li class="quit_own">退出账号<span><button>&gt;</button></span></li>
+     <li class="quit_own">退出账号<span><button @click='quit_click()'>&gt;</button></span></li>
  </ul>
 </div>
 </template>
@@ -21,6 +21,11 @@ export default {
       },aboutus_click(){
       this.$router.push({path:'/aboutus'})
       },
+      quit_click(){
+           localStorage.removeItem('userInfo');
+            //  console.log(localStorage.getItem('userInfo'));
+             location.reload()
+      }
   }
 }
 </script>
