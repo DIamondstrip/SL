@@ -16,6 +16,7 @@
           <img :src= item.avatar alt />
         </div>
         <div class="usermsg">
+
           <p>
             测试文字
             <span class="sex">
@@ -25,6 +26,7 @@
             </span>
           </p>
           <span>ID:123456</span>
+
         </div>
       </li>
     </ul>
@@ -43,6 +45,7 @@ export default {
     goBack() {
       this.$router.go(-1);
     }
+
   },
   directives: {
     ifocus: {

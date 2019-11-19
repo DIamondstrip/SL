@@ -135,7 +135,7 @@ export default {
           })
             .then(response => {
               let res = response.data
-              // console.log(response.data);
+              console.log(response.data);
               // 如果返回的ok,转跳首页，同时存本地存储---->这里还有再加个if,判断是否是新用户，若是则转跳到选择性别页面，若不是就转跳到首页next
               if (res.code == 10004) { //登陆成功，且是老用户
                 // console.log(this.$router);

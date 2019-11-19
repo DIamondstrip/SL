@@ -7,31 +7,32 @@
       <div class="xinxi">
         <div class="xinxi-zuo">
           <p class="name">
-            {{Mdata.nick}}
-            <span class="sex">{{Mdata.sex}}</span>
+            {{ Mdata.nick }}
+            <span class="sex">{{ Mdata.sex }}</span>
             <!-- <span class="sex"></span> -->
           </p>
-          <p class="ID">ID:{{Mdata.uid}}</p>
-          <p class="autograph">{{Mdata.autograph}}</p>
+
+          <p class="ID">ID:{{ Mdata.uid }}</p>
+          <p class="autograph">{{ Mdata.autograph }}</p>
           <!-- 关注（点击跳转） -->
           <router-link to="/attFans/attention">
             <span class="guanzhu" style="margin-left: 0;">
               关注 &nbsp;
-              <i class="inum">{{Mdata.follow}}</i>
+              <i class="inum">{{ Mdata.follow }}</i>
             </span>
           </router-link>
           <!-- 粉丝（点击跳转） -->
           <router-link to="/attFans/fans">
             <span class="guanzhu">
               粉丝 &nbsp;
-              <i class="inum">{{Mdata.fans}}</i>
+              <i class="inum">{{ Mdata.fans }}</i>
             </span>
           </router-link>
           <!-- 来访（点击跳转） -->
           <router-link to="/laifang">
             <span class="guanzhu">
               来访 &nbsp;
-              <i class="inum">{{Mdata.visitor}}</i>
+              <i class="inum">{{ Mdata.visitor }}</i>
             </span>
           </router-link>
         </div>
@@ -60,6 +61,7 @@
           >
             <!-- <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i> -->
             我的账户 ：{{Mdata.uPrice}}
+
           </van-button>
         </router-link>
         <!-- 我的金币（点击跳转） -->
@@ -72,6 +74,7 @@
           >
             <!-- <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i> -->
             我的金币 ：{{Mdata.goldCoin}}
+
           </van-button>
         </router-link>
       </div>
@@ -161,12 +164,13 @@ export default {
     return {
       checked: true,
       phone: "",
-      Mdata:{},
+      Mdata: {},
       err: 0,
       msg: "",
       server_time: "2019-07-02 16:36:21"
     };
   },
+
   // 阻塞最下面tab栏
   mounted() {
     eventbus.$emit("showFooter", true);
@@ -179,17 +183,17 @@ export default {
     //   .catch(function(error) {
     //     console.log(error);
     //   });
-
+    
     this.$axios({
-      method: 'post',
+      method: "post",
       url: "/user/userinfo",
-      data:"tel=13516783231"
+      data: "tel=13516783231"
     })
-    .then(response => {
-        this.Mdata = response.data.data
+      .then(response => {
+        this.Mdata = response.data.data;
         console.log(this.Mdata);
 
-        return  this.Mdata
+        return this.Mdata;
       })
       .catch(function(error) {
         console.log(error);

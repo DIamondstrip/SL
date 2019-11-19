@@ -4,12 +4,20 @@
     <div class="account">
       <div class="account-name">
         <p>真实姓名：</p>
-        <input type="text" placeholder="请输入真实姓名" />
+        <p class="input" v-if="nameShow2">{{nameValue2}}</p>
+        <input
+          type="text"
+          placeholder="请输入真实姓名"
+          v-model="nameValue1"
+          v-if="nameShow1"
+          class="input"
+        />
       </div>
       <div class="account-zfb">
         <p>支付宝账号：</p>
-        <input type="text" placeholder="填写支付宝账号" />
-        <button>保存</button>
+        <p class="input" v-if="numShow2">{{numValue2}}</p>
+        <input type="text" placeholder="填写支付宝账号" v-model="numValue1" class="input" v-if="numShow1" />
+        <button @click="finish" ref="btnRef">{{butValue}}</button>
       </div>
       <div class="account-msg">
         <p>注意事项：</p>
@@ -29,15 +37,54 @@ import Test from "../../components/Test";
 export default {
   name: "account",
   data() {
-    return {};
+    return {
+      nameValue1: "",
+      nameValue2: "",
+      numValue1: "",
+      numValue2: "",
+      nameShow1: true,
+      nameShow2: false,
+      numShow1: true,
+      numShow2: false,
+      butValue: "保存"
+    };
   },
-  methods: {},
+  methods: {
+    finish() {
+      if (!/^[\u4e00-\u9fa5]{2,6}$/.test(this.nameValue1)) {
+        this.$toast({ type: "fail", message: "请输入真实姓名" });
+        this.nameValue = "";
+        this.$refs.btnRef.style = "background:#b2b2b2";
+      } else if (!/^[1]([3-9])[0-9]{9}$/.test(this.numValue1)) {
+        this.$toast({ type: "fail", message: "请输入正确的支付宝账号" });
+        this.numValue = "";
+        this.$refs.btnRef.style = "background:#b2b2b2";
+      } else {
+        this.$notify({ background: "green", message: "绑定成功" });
+        this.nameShow1 = false;
+        this.nameShow2 = true;
+        this.numShow1 = false;
+        this.numShow2 = true;
+        this.nameValue2 = this.nameValue1;
+        this.numValue2 = this.numValue1;
+        this.butValue = "已绑定";
+      }
+    }
+  },
   computed: {},
   components: {
     Test
   },
   mounted() {
     eventbus.$emit("showFooter", false);
+  },
+  updated() {
+    if (
+      /^[\u4e00-\u9fa5]{2,6}$/.test(this.nameValue1) &&
+      /^[1]([3-9])[0-9]{9}$/.test(this.numValue1)
+    ) {
+      this.$refs.btnRef.style = "background:green";
+    }
   }
 };
 </script>
@@ -57,7 +104,7 @@ export default {
   font-size: 16px;
   margin: 20px 0;
 }
-.account input {
+.account .input {
   width: 300px;
   height: 10px;
   background: #f2f2f2;
@@ -65,6 +112,7 @@ export default {
   font-size: 16px;
   padding: 20px;
   border-radius: 5px;
+  line-height: 3px;
 }
 .account button {
   background: #b2b2b2;

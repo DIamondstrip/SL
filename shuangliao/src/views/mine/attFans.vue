@@ -89,7 +89,7 @@ export default {
 <style scoped>
 .app {
   width: 100%;
-  margin-left: 30px;
+  padding-left: 30px;
 }
 .container {
   padding: 20px 0;
@@ -107,7 +107,7 @@ export default {
 }
 .names {
   display: inline-block;
-  margin-left: -80px;
+  margin-left: -50px;
   padding-bottom: 10px;
 }
 .names li {
