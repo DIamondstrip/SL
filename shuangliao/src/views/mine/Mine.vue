@@ -186,7 +186,7 @@ export default {
     
     this.$axios({
       method: "post",
-      url: "/user/userinfo",
+      url: "/userinfo",
       data: "tel=13516783231"
     })
       .then(response => {
