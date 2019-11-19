@@ -179,53 +179,53 @@ const router = new VueRouter({
 
 // // 全局解析守卫
 // // 从本地存储获取登录的用户信息，若存在说明之前登录过，否则转跳登录页面
-// router.beforeEach((to, from, next) => {
-//   //判断是否登陆过，获取浏览器缓存的用户手机号信息
-//   let userStr = window.localStorage.getItem('userInfo');
-//   // let sex = window.localStorage.getItem('sex');
-//   // let code = window.localStorage.getItem('code');  
+router.beforeEach((to, from, next) => {
+  //判断是否登陆过，获取浏览器缓存的用户手机号信息
+  let userStr = window.localStorage.getItem('userInfo');
+  // let sex = window.localStorage.getItem('sex');
+  // let code = window.localStorage.getItem('code');  
 
-//   if(userStr){
-//     let userInfo = JSON.parse(userStr)
-//     // 有登录过，则发起请求，判断登录是否失效 
-//     axios({
-//       method: "post",
-//       url: "/user/register",
-//       // data:{} json数据
-//       // params{} 拼接字符串到地址栏
-//       params: {
-//         tel: userInfo.tel,
-//       }
-//     })
-//       .then((response)=>{
-//         let res = response.data
-//         if(res.code==10004) {//登录未过期，则不用再登录了
-//           if(to.path=='CodeLogin'){//如果是登陆页自动跳转到首页
-//             next('/');
-//           }else{ //其他就不跳
-//             next();
-//           }
-//         } else {//登陆过期，需要再登陆
-//           window.localStorage.removeItem('userInfo')
-//           // window.localStorage.removeItem('sex')
-//           // window.localStorage.removeItem('code')
-//           next('/CodeLogin');
-//         }
-//       })
-//       .catch((error)=>{
-//         console.log(error)
-//         // 刷新页面
-//       })
-//   }
-//   else { //从来没登录过的用户，直接到登录页面
-//     if (to.path == '/CodeLogin') { //如果是登录页面路径，就直接next()
-//       next();
-//     } else { //不然就跳转到登录；
-//       next('/CodeLogin');
-//     }
-//   }
-//   // next();
-// })
+  if(userStr){
+    let userInfo = JSON.parse(userStr)
+    // 有登录过，则发起请求，判断登录是否失效 
+    axios({
+      method: "post",
+      url: "/user/register",
+      // data:{} json数据
+      // params{} 拼接字符串到地址栏
+      params: {
+        tel: userInfo.tel,
+      }
+    })
+      .then((response)=>{
+        let res = response.data
+        if(res.code==10004) {//登录未过期，则不用再登录了
+          if(to.path=='CodeLogin'){//如果是登陆页自动跳转到首页
+            next('/');
+          }else{ //其他就不跳
+            next();
+          }
+        } else {//登陆过期，需要再登陆
+          window.localStorage.removeItem('userInfo')
+          // window.localStorage.removeItem('sex')
+          // window.localStorage.removeItem('code')
+          next('/CodeLogin');
+        }
+      })
+      .catch((error)=>{
+        console.log(error)
+        // 刷新页面
+      })
+  }
+  else { //从来没登录过的用户，直接到登录页面
+    if (to.path == '/CodeLogin') { //如果是登录页面路径，就直接next()
+      next();
+    } else { //不然就跳转到登录；
+      next('/CodeLogin');
+    }
+  }
+  // next();
+})
 
 export default router
 
