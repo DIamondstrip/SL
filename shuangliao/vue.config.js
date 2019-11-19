@@ -5,12 +5,36 @@ module.exports = {
 	// 服务端代理，解决跨域
 	devServer: {
 		proxy: {
+			// 请求验证码接口
 			'/sms': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
+			//登录注册，我的 接口
 			'/user': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			// 编辑资料请求数据
+			'/getUserInfo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			'/userisitor': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			// 头像发送上传
+			'/file/imageupload': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			'/editUserInfo': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
