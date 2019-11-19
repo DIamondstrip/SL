@@ -28,12 +28,14 @@
 </template>
 
 <script>
-import eventbus from "../../eventbus";
-import Test from "../../components/Test";
+import eventbus from '../../eventbus'
+import Test from '../../components/Test'
 export default {
-  name: "blackList",
+  name: 'blackList',
   data() {
-    return {};
+    return {
+      blackList: []
+    }
   },
   methods: {},
   computed: {},
@@ -41,9 +43,9 @@ export default {
     Test
   },
   mounted() {
-    eventbus.$emit("showFooter", false);
+    eventbus.$emit('showFooter', false)
   }
-};
+}
 </script>
 
 <style scoped>
@@ -76,6 +78,14 @@ export default {
 /* 信息 */
 .blmsg {
   margin-left: -100px;
+  display: flex;
+  flex-direction: column;
+}
+.msg1 {
+  height: 30px;
+  line-height: 30px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 .msg1 i {
   color: black;
