@@ -189,7 +189,7 @@ export default {
     //   .catch(function(error) {
     //     console.log(error);
     //   });
-
+    
     this.$axios({
       method: "post",
       url: "/userinfo",

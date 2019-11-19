@@ -33,7 +33,13 @@
         </span>
       </li>
       <li class="button_c">
-        <button @click="SubmitData">完成</button>
+        <button
+          @click="SubmitData"
+          v-bind:class="bgbtn"
+          :disabled="codeDisabled"
+        >
+          完成
+        </button>
       </li>
     </ul>
     <!-- nickname 称昵弹窗 -->
@@ -58,6 +64,7 @@
                 ref="usernicknamecomfire"
               />
             </div>
+            <div ref="Itip">{{ inputtip }}</div>
           </div>
         </div>
 
@@ -65,7 +72,6 @@
           <button
             class="van-button van-button--danger van-button--normal van-button--block"
             @click="savenickname"
-            
           >
             <span class="van-button__text">保存</span>
           </button>
@@ -102,6 +108,12 @@ export default {
   name: "datacomplete",
   data() {
     return {
+      // 是否禁用按钮
+      codeDisabled: false,
+      // 完成按钮的颜色
+      bgbtn: "complete_btn1",
+      // 提示
+      inputtip: "",
       // 图片数据
       fileList: [],
       imginfo: "",
@@ -142,10 +154,9 @@ export default {
     // 图片上传
     // onRead2方法会接收一个file参数，需要将file.file中的参数传到数据库，
     onRead2(file) {
-      console.log("1:",file);
-      console.log("2:", file.file
-      );
-      console.log("3:",file.content);
+      console.log("1:", file);
+      console.log("2:", file.file);
+      console.log("3:", file.content);
       // onRead2方法会接收一个file参数，获取关于上传头像的信息
       this.imginfo = file.file;
     },
@@ -166,29 +177,59 @@ export default {
       this.isActive = false;
     },
     savenickname() {
+      // console.log(this.$refs.Itip);
+      // console.log(this.$refs.usernicknamecomfire);
+      if (this.$refs.usernicknamecomfire.value === "") {
+        this.inputtip = "输入不能为空，请输入称昵";
+        this.isActive = false;
+      } else {
         //编辑称昵,从页面消失，回到初始状态
         this.isActive = true;
-      console.log(this.$refs.usernicknamecomfire.value);
-      this.usernickname = this.$refs.usernicknamecomfire.value;
+        console.log(this.$refs.usernicknamecomfire.value);
+        this.usernickname = this.$refs.usernicknamecomfire.value;
+        this.inputtip = "";
+      }
     },
     SubmitData() {
-      // 所有资料填写完毕，将相应信息传给后端，同时转跳到首页
-      axios
-        .post("/user/register", {
+      // 所有需要填写的资料都填写完了，则发送请求
+      if (this.imginfo && this.usernickname && this.date) {
+        // 禁用完成按钮,避免重复发送请求
+        this.codeDisabled = true;
+        // 按钮颜色改变
+        // this.bgbtn = complete_btn2;
+
+        // 所有资料填写完毕，将相应信息传给后端，同时转跳到首页
+        // http://fgserver.top/editUserInfo
+        axios({
+          method: "post",
+          url: "/editUserInfo",
+          // axios
+          //   .post("/editUserInfo", {
           //传参
-            params: {
-                tel: this.phone,
-                nickname:this.usernickname,
-                sex:this.sex
+          data: {
+            tel: this.phone,
+            // tel: 13516783231,
+            sex: this.sex,
+            nick: this.usernickname,
+            // nick: "dd",
+            autograp: this.imginfo,
+            data: this.date
+          }
+        })
+          .then(response => {
+            console.log(response.data);
+            if (response.data.messge) {
+              this.$router.push("/");
             }
-        })
-        .then(response => {
-          console.log(response.data);
-          this.$router.push('/');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+          })
+          .catch(error => {
+            // 取消 禁用完成按钮
+            this.codeDisabled = false;
+            console.log(error);
+          });
+      } else {
+        // 提示需要重新提交
+      }
     }
   }
 };
@@ -254,13 +295,22 @@ ul .head #uploadavatar .van-uploader__upload {
 }
 
 /* 称昵弹出的保存按钮 */
-.van-button__text{
-    color: aliceblue
+.van-button__text {
+  color: aliceblue;
 }
 
 /* 输入的span信息 */
-span{
-    color: #b2b2b2;
+span {
+  color: #b2b2b2;
+}
+
+ul .button_c button.complete_btn1 {
+  background-color: #ee0a24;
+}
+
+ul .button_c button.complete_btn2 {
+  background-color: #b2b2b2;
+  color: aliceblue;
 }
 
 /* ------------------------------------- */
@@ -276,7 +326,6 @@ ul .button_c {
 ul .button_c button {
   width: 100%;
   border: none;
-  background: #b2b2b2;
   color: white;
   font-size: 15px;
   padding: 15px;

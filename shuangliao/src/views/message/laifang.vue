@@ -3,74 +3,34 @@
     <Test>来访</Test>
     <!-- tab -->
     <div class="content">
-        <van-tabs v-model="active" class="main">
-
-
+        <van-tabs v-model="activeName" class="main">
             <!-- tab1 -->
-            <van-tab title="来访" class="left">
-                <ul>
-                    <li @click='comedetails'>
+            <van-tab title="来访" class="left" name="one">
+                <ul >
+                    <li :key="item.index" v-for="item in Data1">
+                        <router-link :to="'/details/'+item.vUid">
                         <div class="touxiang"></div>
                         <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>来访</span></p>
+                            <p><span>{{item.nick}}</span>&nbsp;<span class="sex" ref="sex" v-if="item.sex==1">♂{{item.age}}</span>
+                            <span class="sex1" ref="sex" v-else>♀{{item.age}}</span></p>
+                            <p><span style="font-size:12px;">{{item.vTime}}</span>&nbsp;<span>来访</span></p>
                         </div>
-                       
-                    </li>
-                     <li>
-                        <div class="touxiang"></div>
-                        <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>来访</span></p>
-                        </div>
-                      
-                    </li>
-                     <li>
-                        <div class="touxiang"></div>
-                        <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂18</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>来访</span></p>
-                        </div>
-                      
+                        </router-link>
                     </li>
                 </ul>
             </van-tab>
-
-
             <!-- tab2 -->
-            <van-tab title="去访" class="qufang">
+            <van-tab title="去访" class="qufang" name="two">
                  <ul>
-                    <li @click='todetails'>
+                    <li :key="aaa.index" v-for="aaa in Data2">
+                        <router-link :to="'/details/'+aaa.uid">
                         <div class="touxiang"></div>
                         <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>去访</span></p>
+                            <p><span>{{aaa.nick}}</span>&nbsp;<span class="sex" v-if="aaa.sex==1">♂{{aaa.age}}</span>
+                            <span class="sex1" v-else>♀{{aaa.age}}</span></p>
+                            <p><span style="font-size:12px;">{{aaa.vTime}}</span>&nbsp;<span>去访</span></p>
                         </div>
-                       
-                    </li>
-                     <li>
-                        <div class="touxiang"></div>
-                        <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂26</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>去访</span></p>
-                        </div>
-                      
-                    </li>
-                     <li>
-                        <div class="touxiang"></div>
-                        <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂18</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>去访</span></p>
-                        </div>
-                      
-                    </li>
-                     <li>
-                        <div class="touxiang"></div>
-                        <div class="center">
-                            <p><span>张泽禹</span>&nbsp;<span class="sex">♂18</span></p>
-                            <p><span style="font-size:12px;">2019/11/11</span>&nbsp;<span>去访</span></p>
-                        </div>
-                      
+                        </router-link>
                     </li>
                 </ul>
             </van-tab>
@@ -87,45 +47,81 @@ import eventbus from '../../eventbus'
 export default {
   data() {
     return {
-      active: 2,
+      activeName:"one",
       show:false,
-      items:[
-          {id:1,name:'aaa',content:'wewqrwqr'},
-          {id:2,name:'bbb',content:'we11111wqr'}
-      ],
-      aaa:{
-
-      }
+      sex:null,
+      number:'1',
+      Data1:{},
+      Data2:{},
     };
   },
  components:{
         Test,
     },
   methods: {
+     
+     num1(){
+         this.number=1;
+         console.log(1);
+     },
+     num2(){
+         this.number=2;
+          console.log(2);
+     },
      touch(test,event,item){
         event.target.parentNode.style.display='none';
         event.target.parentNode.parentNode.lastChild.style.display='block'
         if(test){
-        Vue.set(this.aaa,item.id,'已选择同意，该笔收益将退款')
+            Vue.set(this.aaa,item.id,'已选择同意，该笔收益将退款')
         }else{
-          Vue.set(this.aaa,item.id,'不同意退款，平台处理中')
+            Vue.set(this.aaa,item.id,'不同意退款，平台处理中')
         }
      },
-     todetails(){
+     todetails(){//前往详情页
          this.$router.push({path:'/details/id'})
      },
      comedetails(){
          this.$router.push({path:'/details/id'})
-     }
+     },
   },
   mounted() {
     eventbus.$emit('showFooter',false)
+    this.$axios({//请求
+      method: "post",
+      url: "/user/visitor",
+      params:{tel:"13516783231",visit_state:'1'},
+    })
+      .then(response => {
+        console.log(1);
+        console.log(response.data.data)
+        this.Data1=response.data.data;
+       
+        return this.Data1;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+      this.$axios({//请求
+      method: "post",
+      url: "/user/visitor",
+      params:{tel:"13516783231",visit_state:'2'},
+    })
+      .then(response => {
+        console.log(2);
+        console.log(response.data.data)
+        this.Data2=response.data.data;
+        return this.Data2;
+      })
+      .catch(function(error){
+        console.log(error);
+      });
   },
 }
 </script>
 
-
 <style scoped>
+/* 来访 */
 .top {
   width: 310px;
   height: 55px;
@@ -182,6 +178,14 @@ export default {
 }
 .content ul li .center .sex{
     background: blue;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 12px;
+    font-size: 12px;
+    color:white;
+}
+.content ul li .center .sex1{
+    background: pink;
     border-radius: 5px;
     text-align: center;
     line-height: 12px;
