@@ -178,7 +178,7 @@ export default {
           //传参
             params: {
                 tel: this.phone,
-                nickname:this.usernickname,
+                nick:this.usernickname,
                 sex:this.sex
             }
         })

@@ -58,7 +58,7 @@
             style="font-size:14px"
             size="normal"
           >
-            <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i>
+            <!-- <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i> -->
             我的账户 ：{{Mdata.uPrice}}
           </van-button>
         </router-link>
@@ -70,7 +70,7 @@
             size="normal"
             style="font-size:14px"
           >
-            <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i>
+            <!-- <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i> -->
             我的金币 ：{{Mdata.goldCoin}}
           </van-button>
         </router-link>

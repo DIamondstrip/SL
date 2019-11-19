@@ -13,6 +13,7 @@
         :focused="showKeyboard"
         @focus="showKeyboard = true"
         ref="CodeInput"
+        style="border:1px solid #ccc"
       />
 
       <!-- 提示信息 -->
@@ -30,7 +31,8 @@
     </div>
 
     <!-- button按钮 -->
-    <button class="code_btn" @click="getcode" v-bind:class="bg" :disabled="codeDisabled">{{ text }}</button>
+    <!-- <button class="code_btn" @click="getcode" v-bind:class="bg" :disabled="codeDisabled">{{ text }}</button> -->
+    <van-button type="warning" class="code_btn"  @click="getcode" v-bind:class="bg" :disabled="codeDisabled">{{ text }}</van-button>
     <button
       class="code_btn code_btn3"
       @click="submit"
@@ -41,6 +43,7 @@
 </template>
 
 <script>
+import eventbus from '../eventbus'
 import Test from "./Test";
 // 引入axios
 // import axios from './axios' 报错  ??????????????????????????????????
@@ -83,6 +86,7 @@ export default {
     // 写的路由，挂载时接收传递来的参数
     // this.phone = this.$route.params.phone;
     console.log(this.phone);
+    eventbus.$emit('showFooter',false)
   },
   components: {
     Test,
@@ -130,7 +134,6 @@ export default {
             }
           })
             .then(response => {
-              debugger
               let res = response.data
               // console.log(response.data);
               // 如果返回的ok,转跳首页，同时存本地存储---->这里还有再加个if,判断是否是新用户，若是则转跳到选择性别页面，若不是就转跳到首页next
@@ -278,10 +281,10 @@ export default {
 }
 .code_title {
   margin: 30px 0 0;
-  text-align: left;
+  text-align: center;
 }
 .code_phone {
-  margin: 10px 0 10px;
+  text-align: center;
 }
 .code_body {
   width: 100%;
@@ -291,17 +294,18 @@ export default {
 
 /* 按钮-重新获取验证码 */
 .code_btn {
+  display: block;
+  margin: 0 auto;
   margin-top: 30px;
   height: 56px;
   border: none;
   outline: none;
   border-radius: 6px;
   font-size: 18px;
-  width: 100%;
+  
+  width: 80%;
 }
-.code_btn1 {
-  background-color: blue;
-}
+
 
 .code_btn2 {
   background-color: #b2b2b2;
@@ -321,6 +325,5 @@ export default {
 /* 输入验证码过程的提示信息 */
 span {
   font-size: 14px;
-  color: red;
 }
 </style>
