@@ -24,6 +24,7 @@ module.exports = {
                 changeOrigin: true //允许跨域
             },
             '/user/visitor':{
+
                 target: 'http://fgserver.top',//代理的接口域名
                 ws: true,
                 changeOrigin: true //允许跨域

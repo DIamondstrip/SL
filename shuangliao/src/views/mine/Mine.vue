@@ -59,12 +59,9 @@
             style="font-size:14px"
             size="normal"
           >
-            <i
-              class="fa fa-credit-card-alt"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
-            我的账户 ：{{ Mdata.uPrice }}
+            <!-- <i class="fa fa-credit-card-alt" aria-hidden="true" style="margin-right:10px"></i> -->
+            我的账户 ：{{Mdata.uPrice}}
+
           </van-button>
         </router-link>
         <!-- 我的金币（点击跳转） -->
@@ -75,12 +72,9 @@
             size="normal"
             style="font-size:14px"
           >
-            <i
-              class="fa fa-money"
-              aria-hidden="true"
-              style="margin-right:10px"
-            ></i>
-            我的金币 ：{{ Mdata.goldCoin }}
+            <!-- <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i> -->
+            我的金币 ：{{Mdata.goldCoin}}
+
           </van-button>
         </router-link>
       </div>

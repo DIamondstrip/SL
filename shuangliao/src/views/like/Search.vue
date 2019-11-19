@@ -7,43 +7,26 @@
         style="vertical-align: middle;"
         @click="goBack"
       ></i>
-      <!-- v-on:input ="inputFunc"监听input的输入值变化事件 -->
-      <!-- v-model="demo"绑定v-modl，用来监听input数据 -->
-      <input
-        v-model="inputTxt"
-        placeholder="搜索你想要的内容"
-        v-ifocus
-        v-on:input="searchUser"
-      />
+      <input placeholder="搜索你想要的内容" v-ifocus />
     </div>
-
-    <!-- 搜索框下面的 -->
     <ul class="content">
-      <li>
-        <!-- 左边的头像 -->
+        <!--  -->
+      <li :key="item.index" v-for="item in friend">
         <div class="userpic">
-          <!-- <img
-            src="http://img0.imgtn.bdimg.com/it/u=154152772,568223528&fm=26&gp=0.jpg"
-            alt
-          /> -->
-          <img src="textlist.xxx" alt />
+          <img :src= item.avatar alt />
         </div>
-        <!-- 右边的用户信息 -->
         <div class="usermsg">
-          <!-- 上面的文字 -->
+
           <p>
             测试文字
             <span class="sex">
               <i class="fa fa-mars" aria-hidden="true"></i>
-              <!-- <em class="age">23</em> -->
-              <em class="age">textlist.xxx</em>
-
+              <em class="age">23</em>
               <!-- <i class="fa fa-venus" aria-hidden="true"></i> -->
             </span>
           </p>
-          <!-- 下面的ID -->
-          <!-- <span>ID:123456</span> -->
-          <span>ID:textlist.xxx</span>
+          <span>ID:123456</span>
+
         </div>
       </li>
     </ul>
@@ -51,73 +34,18 @@
 </template>
 
 <script>
+import { log } from 'util';
 export default {
-  data() {
-    return {
-      // input的值
-      inputTxt: '',
-      // this.textlist为搜索框下面的内容
-      textlist: [
-                '吃饭',
-                '吃面包',
-                '吃面条',
-                '喝水',
-                '喝茶',
-                '喝茶叶',
-            ]
-    };
-  },
-  // 通过watch来直接监测demo，如果demo的值变化，value的值也会跟着一起变化。
-  watch: {
-    inputTxt(textlist) {
-      this.textlist = this.inputTxt;
+    data(){
+        return {
+            friend:[]
+        }
+    },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
     }
-  },
-   //下方提示内容的过滤
-  computed: { // 计算属性
-        filter_textlist() {
-            if (!this.inputTxt) {
-                return [];
-            }
-            return this.textlist.filter((text) => {
-                return text.startsWith(this.inputTxt)
-            })
-        },
-        methods: {
-            goBack() {
-            this.$router.go(-1);
-        },
-        // 搜索用户的v-model
-        searchUser(val) {
-            this.lastTimer = val; // lastTimer为全局变量
-        clearTimeout(timeoutId);
-        let timeoutId = setTimeout(function() {
-            if(this.lastTimer === val){//如果this.lastTimer === val（也就是你停止输入0.5s之内都没有其它的值发生变化）则做你想要做的事
-                    // 发送axios请求
-                    axios({
-                    method: "post",
-                    // url: "/editUserInfo",
-                    //传参
-                    data: {
-                        tel: 13516783231,
-                        nick: "dd"
-                    }
-                    })
-                    .then(response => {
-                        console.log(response.data);
-                        if (response.data.messge) {
-                        // 把数据实时反馈到界面
 
-                        }
-                    })
-                    .catch(error => {
-                        // 请求不成功
-                        console.log(error);
-                    });
-                }
-            }, 2000);
-        }
-        }
   },
   directives: {
     ifocus: {
@@ -126,6 +54,20 @@ export default {
         el.focus();
       }
     }
+  },
+  mounted() {
+    this.$axios({
+      method: "post",
+      url: "/searchUsers",
+      params: {
+          tel: "15167171531",
+        content: "李"
+      }
+    }).then(res=>{
+        console.log(res.data.data[0].avatar);
+        return this.friend = res.data.data;
+        
+    });
   }
 };
 </script>
