@@ -40,8 +40,9 @@ export default {
   position: fixed;
   background: white;
   bottom: 0;
+  left: 0;
   display: flex;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #aaa;
 }
 .nav > div {
   height: 50px;

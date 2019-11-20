@@ -174,20 +174,11 @@ export default {
   // 阻塞最下面tab栏
   mounted() {
     eventbus.$emit("showFooter", true);
-    this.phone = JSON.parse(window.localStorage.getItem("userInfo")).tel;
-    // this.$axios
-    //   .post("/user/userinfo", "tel=13516783231")
-    //   .then(response => {
-    //     console.log(response.data.data);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-    
+    this.phone = JSON.parse(window.localStorage.getItem("userInfo")).tel;    
     this.$axios({
       method: "post",
-      url: "/userinfo",
-      data: "tel=13516783231"
+      url: "/user/userinfo",
+      params:{tel:this.phone}
     })
       .then(response => {
         this.Mdata = response.data.data;

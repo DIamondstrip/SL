@@ -23,16 +23,52 @@ module.exports = {
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
-			'/userisitor': {
+			'/user/visitor': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
-			// 头像发送上传
-			'/file/imageupload': {
+			// 搜索接口代理
+			'/searchUsers': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
+			},
+			'/home': {
+				// 首页
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			'/user/personal_details': {
+				// 个人详情页
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/fans': {
+				// 关注 or 取消关注
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/showTaPhotos': {
+				//详情页  TA人相册
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/gift': {
+				// 详情页 底部弹出层 礼物
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/user/userinfo': {
+				// 详情页 底部弹出层 礼物
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
 			},
 			'/editUserInfo': {
 				target: 'http://fgserver.top', //代理的接口域名
