@@ -6,12 +6,14 @@
     <van-tabs v-model="activeName">
       <hr />
       <!-- Tab切换=收到礼物 -->
-      <van-tab title="收到" name="getGift">
+      <van-tab title="收到"
+               name="getGift">
         <!-- 礼物 -->
         <div class="getG">
           <ul>
             <!-- 此处数据应遍历赋值（li标签） -->
-            <li v-for="(getL1,index) in getList1" :key="index">
+            <li v-for="(getL1,index) in getList1"
+                :key="index">
               <span class="span1">
                 <img :src="getL1.url" />
               </span>
@@ -33,7 +35,8 @@
         <div class="manG">
           <ul>
             <!-- 此处数据应遍历赋值（li标签） -->
-            <li v-for="(getL2,index) in getList2" :key="index">
+            <li v-for="(getL2,index) in getList2"
+                :key="index">
               <div class="mgLi">
                 <!-- 头像 -->
                 <div class="mgImg">
@@ -55,10 +58,12 @@
         </div>
       </van-tab>
       <!-- Tab切换=送出礼物 -->
-      <van-tab title="送出" name="putGift">
+      <van-tab title="送出"
+               name="putGift">
         <ul>
           <!-- 此处数据应遍历赋值（li标签） -->
-          <li v-for="(sendL,index) in sendList" :key="index">
+          <li v-for="(sendL,index) in sendList"
+              :key="index">
             <div class="mgLi">
               <!-- 头像 -->
               <div class="mgImg">
@@ -83,58 +88,60 @@
 </template>
 
 <script>
-import eventbus from "../../eventbus";
-import Test from "../../components/Test";
+import eventbus from '../../eventbus'
+import Test from '../../components/Test'
 export default {
-  name: "sendGift",
+  name: 'sendGift',
   data() {
     return {
-      activeName: "",
+      activeName: '',
       getList1: [],
       getList2: [],
-      sendList: []
-    };
+      sendList: [],
+      user: ''
+    }
   },
   methods: {},
   created() {
-    this.activeName = this.$route.params.giftName;
+    this.activeName = this.$route.params.giftName
   },
   mounted() {
-    eventbus.$emit("showFooter", false);
+    eventbus.$emit('showFooter', false)
+    this.user = JSON.parse(window.localStorage.getItem('userInfo'))
     //发送异步请求 （收到礼物）
     this.$axios({
-      method: "post",
-      url: "/gift/usergifts",
-      params: { tel: "13516783231", state: "1" }
+      method: 'post',
+      url: '/gift/usergifts',
+      params: { tel: this.user.tel, state: '1' }
     })
       .then(response => {
         // console.log("收到礼物", response.data.data);
-        this.getList1 = response.data.data.gifts;
-        this.getList2 = response.data.data.users;
+        this.getList1 = response.data.data.gifts
+        this.getList2 = response.data.data.users
       })
       .catch(error => {
-        console.log("出错啦！", error);
-      });
+        console.log('出错啦！', error)
+      })
 
     //发送异步请求 （送出礼物）
     this.$axios({
-      method: "post",
-      url: "/gift/usergifts",
-      params: { tel: "13516783231", state: "2" }
+      method: 'post',
+      url: '/gift/usergifts',
+      params: { tel: '13516783231', state: '2' }
     })
       .then(response => {
         // console.log("送出礼物", response.data.data);
-        this.sendList = response.data.data;
+        this.sendList = response.data.data
       })
       .catch(error => {
-        console.log("出错啦！", error);
-      });
+        console.log('出错啦！', error)
+      })
   },
   computed: {},
   components: {
     Test
   }
-};
+}
 </script>
 
 <style scoped>

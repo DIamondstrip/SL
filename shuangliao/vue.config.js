@@ -39,8 +39,38 @@ module.exports = {
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
+			//我的礼物
 			'/gift/usergifts': {
-				//我的礼物
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//上传身份信息
+			'/uploadCard': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//获取身份信息
+			'/getCardInfo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//获取支付宝信息
+			'/get_payInfo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//绑定支付宝信息
+			'/bind_name': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//我的相册
+			'/showMyPhotos': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
