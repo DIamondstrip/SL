@@ -28,11 +28,11 @@
       <!-- 确认后要禁用状态 disabled-->
 
       <!-- button按钮 -->
-      <button @click="toLogin" class="login_done_btn">获取验证码</button>
+      <van-button square type="primary" class="login_done_btn" @click="toLogin">获取验证码</van-button>
 
       <a href="#" class="wechat_icon">
         <!-- 手机号登录中自定义icon -->
-        <van-icon class-prefix="my-icon" name="extra" />微信登录
+        <i class="fa fa-weixin" aria-hidden="true" style="color:green"></i> 微信登录
       </a>
 
       <!-- 勾选用户协议 -->
@@ -50,6 +50,8 @@
 
 <script scoped>
 import Test from "./Test";
+import eventbus from '../eventbus'
+
 // 引入axios
 // import axios from './axios' 报错
 const axios = require("axios");
@@ -136,7 +138,11 @@ export default {
       // input输入框清空
       // this.value = "";
     }
-  }
+  },
+  mounted() {
+    eventbus.$emit('showFooter',false)
+    
+  },
 };
 </script>
 
@@ -149,7 +155,7 @@ export default {
   margin: 5%;
 }
 .login_title {
-  text-align: left;
+  text-align: center;
   margin: 20px 0;
 }
 .login_body {
@@ -193,6 +199,6 @@ export default {
 /* 输入手机号过程提示信息 */
 span {
   font-size: 14px;
-  color: red;
+  /* color: red; */
 }
 </style>

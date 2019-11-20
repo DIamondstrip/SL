@@ -8,18 +8,16 @@
         @click="goBack"
       ></i>
       <input ref="searchInput" v-model.trim="title" placeholder="输入要搜索的用户称昵" v-ifocus @input="fetchData"/>
-    </div>
 
-    <!-- 搜索框下面的 -->
+    </div>
     <ul class="content">
       <li :key="item.index" v-for="item in text">
         <!-- 左边的头像 -->
         <div class="userpic">
           <img :src="item.avatar" alt />
         </div>
-        <!-- 右边的用户信息 -->
         <div class="usermsg">
-          <!-- 上面的文字 -->
+
           <p>
             测试文字,性别:{{ item.sex }},称昵:{{ item.nick }}
             <span class="sex">
@@ -29,6 +27,7 @@
           </p>
           <!-- 下面的ID -->
           <span>{{ item.uid }}</span>
+
         </div>
       </li>
     </ul>
@@ -94,6 +93,7 @@ export default {
         }
       }
     }
+
   },
   directives: {
     ifocus: {
@@ -102,6 +102,20 @@ export default {
         el.focus();
       }
     }
+  },
+  mounted() {
+    this.$axios({
+      method: "post",
+      url: "/searchUsers",
+      params: {
+          tel: "15167171531",
+        content: "李"
+      }
+    }).then(res=>{
+        console.log(res.data.data[0].avatar);
+        return this.friend = res.data.data;
+        
+    });
   }
 };
 </script>

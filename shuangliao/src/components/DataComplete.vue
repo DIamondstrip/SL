@@ -97,7 +97,7 @@
 
 <script>
 import Test from "./Test";
-
+import eventbus from '../eventbus'
 // 引入axios
 const axios = require("axios");
 
@@ -129,9 +129,10 @@ export default {
       usernickname: "",
       isActive: true,
       nickname: {
-        position: "absolute",
-        left: "0px",
-        bottom: "-210px",
+        // position: "absolute",
+        // left: "0px",
+        // bottom: "-210px",
+        display:'none',
         transition: "all 1s ease-in"
       },
       active: {
@@ -144,6 +145,7 @@ export default {
   },
 
   mounted() {
+    eventbus.$emit('showFooter',false)
     // 挂载时接收路由传递过来的参数
     this.phone = this.$route.params.phone;
     this.sex = this.$route.params.sex;
@@ -191,8 +193,8 @@ export default {
       }
     },
     SubmitData() {
-      // 所有需要填写的资料都填写完了，则发送请求
-      if (this.imginfo && this.usernickname && this.date) {
+      // 所有需要填写的资料都填写完了，则发送请求 this.imginfo &&
+      if ( this.sex && this.usernickname && this.date) {
         // 禁用完成按钮,避免重复发送请求
         this.codeDisabled = true;
         // 按钮颜色改变
@@ -206,15 +208,12 @@ export default {
           // axios
           //   .post("/editUserInfo", {
           //传参
-          data: {
-            tel: this.phone,
-            // tel: 13516783231,
-            sex: this.sex,
-            nick: this.usernickname,
-            // nick: "dd",
-            autograp: this.imginfo,
-            data: this.date
-          }
+            params: {
+                tel: this.phone,
+                nick:this.usernickname,
+                sex:this.sex
+            }
+
         })
           .then(response => {
             console.log(response.data);

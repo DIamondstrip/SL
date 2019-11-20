@@ -11,61 +11,12 @@
         <div class="getG">
           <ul>
             <!-- 此处数据应遍历赋值（li标签） -->
-            <li>
+            <li v-for="(getL1,index) in getList1" :key="index">
               <span class="span1">
-                <van-icon name="point-gift" />
+                <img :src="getL1.url" />
               </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
-            </li>
-            <li>
-              <span class="span1">
-                <van-icon name="point-gift" />
-              </span>
-              <span class="span2">火箭</span>
-              <span class="span3">6</span>
+              <span class="span2">{{getL1.gName}}</span>
+              <span class="span3">{{getL1.oCount}}</span>
             </li>
           </ul>
         </div>
@@ -82,21 +33,21 @@
         <div class="manG">
           <ul>
             <!-- 此处数据应遍历赋值（li标签） -->
-            <li>
+            <li v-for="(getL2,index) in getList2" :key="index">
               <div class="mgLi">
                 <!-- 头像 -->
                 <div class="mgImg">
-                  <img src />
+                  <img :src="getL2.avatar" />
                 </div>
                 <!-- 个人信息 -->
                 <div class="mgMsg">
-                  <p class="msg1">果捏捏</p>
+                  <p class="msg1">{{getL2.nick}}</p>
                   <p class="msg2">
                     <i>赠送</i>
-                    <span>XXXXX礼物</span>
+                    <span>{{getL2.gName}}礼物</span>
                   </p>
                 </div>
-                <div class="msgDate">2019/8/12</div>
+                <div class="msgDate">{{getL2.oTime}}</div>
               </div>
               <hr />
             </li>
@@ -107,21 +58,21 @@
       <van-tab title="送出" name="putGift">
         <ul>
           <!-- 此处数据应遍历赋值（li标签） -->
-          <li>
+          <li v-for="(sendL,index) in sendList" :key="index">
             <div class="mgLi">
               <!-- 头像 -->
               <div class="mgImg">
-                <img src />
+                <img :src="sendL.avatar" />
               </div>
               <!-- 个人信息 -->
               <div class="mgMsg">
-                <p class="msg1">果捏捏</p>
+                <p class="msg1">{{sendL.nick}}</p>
                 <p class="msg2">
                   <i>赠送</i>
-                  <span>XXXXX礼物</span>
+                  <span>{{sendL.gName}}礼物</span>
                 </p>
               </div>
-              <div class="msgDate">2019/8/12</div>
+              <div class="msgDate">{{sendL.oTime}}</div>
             </div>
             <hr />
           </li>
@@ -138,7 +89,10 @@ export default {
   name: "sendGift",
   data() {
     return {
-      activeName: ""
+      activeName: "",
+      getList1: [],
+      getList2: [],
+      sendList: []
     };
   },
   methods: {},
@@ -147,6 +101,34 @@ export default {
   },
   mounted() {
     eventbus.$emit("showFooter", false);
+    //发送异步请求 （收到礼物）
+    this.$axios({
+      method: "post",
+      url: "/gift/usergifts",
+      params: { tel: "13516783231", state: "1" }
+    })
+      .then(response => {
+        // console.log("收到礼物", response.data.data);
+        this.getList1 = response.data.data.gifts;
+        this.getList2 = response.data.data.users;
+      })
+      .catch(error => {
+        console.log("出错啦！", error);
+      });
+
+    //发送异步请求 （送出礼物）
+    this.$axios({
+      method: "post",
+      url: "/gift/usergifts",
+      params: { tel: "13516783231", state: "2" }
+    })
+      .then(response => {
+        // console.log("送出礼物", response.data.data);
+        this.sendList = response.data.data;
+      })
+      .catch(error => {
+        console.log("出错啦！", error);
+      });
   },
   computed: {},
   components: {
@@ -163,7 +145,7 @@ hr {
 .getG ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 .getG ul li {
@@ -173,10 +155,11 @@ hr {
   align-items: center;
   margin: 10px 0;
 }
-.getG .span1 {
-  font-size: 30px;
-  display: inline-block;
-  height: 35px;
+.getG .span1 img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
 }
 .getG .span2 {
   color: #999;
