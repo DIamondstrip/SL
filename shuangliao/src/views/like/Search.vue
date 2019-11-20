@@ -71,6 +71,7 @@ export default {
       if ((val = "")) {
         //输入框的值为空
         // 搜索框下方,两条线不显示
+        
       } else {
         //输入框的值不为空
         // 发送axios请求。接口文档 https://www.showdoc.cc/chen123456789?page_id=3356871744508448
@@ -84,8 +85,12 @@ export default {
               content: this.title
             }
           });
-          if (res.data.messge === "ok") {
+          // success: false
+          if (res.data.success) {
             this.text = res.data.data;
+          }else{
+            // 搜索框下方,两条线不显示,包括渲染的内容清空
+            this.text =[]
           }
         } catch (error) {
           // 请求不成功
