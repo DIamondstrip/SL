@@ -63,7 +63,7 @@
                 <van-cell title="相册" :border="false" is-link to class="phototitle" />
                 <ul class="photomore">
                     <!-- 相册 -->
-                    <li v-for="item of album">
+                    <li v-for="(item,index) of album" :key="index">
                         <img :src="item.pImageurl" alt />
                     </li>
                 </ul>

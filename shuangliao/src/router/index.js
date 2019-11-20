@@ -10,7 +10,15 @@ import Mine from '../views/mine/Mine'
 const axios = require("axios");
 import Search from '../views/like/Search'
 Vue.use(VueRouter)
-
+// 图片上传用
+const axiosAjax = axios.create({
+  timeout: 1000 * 60, //时间
+  withCredentials: true, //跨域携带cookie
+  headers: {
+      "Content-Type": "multipart/form-data"
+  }
+})
+Vue.prototype.axiosAjax = axiosAjax// 用来上传文件的
 const routes = [{
     path: '/',
     component: Friend
@@ -116,14 +124,17 @@ const routes = [{
     path: '/mycoins',
     component: () => import('../views/mine/mycoins.vue')
   },
+  // 编辑资料
   {
     path:'/editdata',
     component: () => import('../views/mine/Editdata.vue')
   },
-  {
-    path:'/editdataname',
-    component: () => import('../views/mine/Editdataname.vue')
-  },
+  // 编辑资料姓名修改
+  // {
+  //   path:'/editdataname',
+  //   component: () => import('../views/mine/Editdataname.vue')
+  // },
+  // 个人设置
   {
     path:'/ownset',
     component: () => import('../views/mine/ownset.vue')
@@ -132,10 +143,12 @@ const routes = [{
     path:'/bindu',
     component: () => import('../views/mine/bindu.vue')
   },
+  // 关于我们
   {
     path:'/aboutus',
     component: () => import('../views/mine/aboutus.vue')
   },
+  // 常见问题
   {
     path:'/usuproblem',
     component: () => import('../views/mine/usuproblem.vue')
