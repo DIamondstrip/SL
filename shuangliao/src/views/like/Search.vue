@@ -19,14 +19,18 @@
         <div class="usermsg">
 
           <p>
-            测试文字,性别:{{ item.sex }},称昵:{{ item.nick }}
-            <span class="sex">
-              <i class="fa fa-mars" aria-hidden="true"></i>
+           称昵:{{ item.nick }}
+            <span class="sex" v-if="item.sex===1" style="background:blue">
+               <i class="fa fa-mars" aria-hidden="true"></i>
+              <em class="age">{{ item.age }}</em>
+            </span>
+            <span class="sex" v-if="item.sex===2" style="background:pink">
+              <i class="fa fa-venus" aria-hidden="true"></i>
               <em class="age">{{ item.age }}</em>
             </span>
           </p>
           <!-- 下面的ID -->
-          <span>{{ item.uid }}</span>
+          <span>ID:{{ item.uid }}</span>
 
         </div>
       </li>
@@ -35,6 +39,7 @@
 </template>
 
 <script>
+import eventbus from '../../eventbus';
 // 节流函数
 const delay = (function() {
   let timer = 0;
@@ -53,6 +58,9 @@ export default {
       text: [] //search  请求后返回的数据，渲染到搜索框下面的内容中
       // textlist:[]
     };
+  },
+  mounted(){
+    eventbus.$emit('showFooter',false);
   },
 
   watch: {
@@ -107,26 +115,18 @@ export default {
         el.focus();
       }
     }
-  },
-  mounted() {
-    this.$axios({
-      method: "post",
-      url: "/searchUsers",
-      params: {
-          tel: "15167171531",
-        content: "李"
-      }
-    }).then(res=>{
-        console.log(res.data.data[0].avatar);
-        return this.friend = res.data.data;
-        
-    });
   }
 };
 </script>
 
 <style scoped>
 .search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  width: 100%;
+
   display: flex;
   justify-content: space-around;
   padding: 15px 0;
@@ -145,8 +145,11 @@ export default {
   margin-top: 5px;
 }
 .content {
-  border-bottom: 1px gray solid;
-  padding: 10px;
+  margin: 70px 0;
+}
+.content li {
+  padding: 15px;
+  border-bottom: 1px #ccc solid;
 }
 .content .userpic {
   width: 60px;
@@ -165,8 +168,8 @@ export default {
 .content .usermsg .sex {
   margin-left: 10px;
   padding: 3px 5px;
-  background: pink;
   border-radius: 5px;
   font-size: 12px;
+  color: #fff;
 }
 </style>

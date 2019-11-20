@@ -23,35 +23,90 @@ module.exports = {
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
-            '/user/visitor':{
-                target: 'http://fgserver.top',//代理的接口域名
-                ws: true,
-                changeOrigin: true //允许跨域
-            },
-            // 搜索接口代理
-            '/searchUsers':{
-                target: 'http://fgserver.top',//代理的接口域名
-                ws: true,
-                changeOrigin: true //允许跨域
-            },
-			// '/uservisitor': {
-			// 	target: 'http://fgserver.top', //代理的接口域名
-			// 	ws: true,
-			// 	changeOrigin: true //允许跨域
-			// },
-			// 头像发送上传
-			'/file/imageupload': {
+			'/user/visitor': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
+			},
+			// 搜索接口代理
+			'/searchUsers': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			'/home': {
+				// 首页
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			'/user/personal_details': {
+				// 个人详情页
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/fans': {
+				// 关注 or 取消关注
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/showTaPhotos': {
+				//详情页  TA人相册
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/gift': {
+				// 详情页 底部弹出层 礼物
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
+			},
+			'/user/userinfo': {
+				// 详情页 底部弹出层 礼物
+				target: 'http://fgserver.top',
+				ws: true,
+				changeOrigin: true
 			},
 			'/editUserInfo': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
 			},
+			//我的礼物
 			'/gift/usergifts': {
-				//我的礼物
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//上传身份信息
+			'/uploadCard': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//获取身份信息
+			'/getCardInfo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//获取支付宝信息
+			'/get_payInfo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//绑定支付宝信息
+			'/bind_name': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			//我的相册
+			'/showMyPhotos': {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
