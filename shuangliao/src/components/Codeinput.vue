@@ -169,6 +169,7 @@ export default {
                 // 登录和发送验证码按钮背景变正常色
                 this.bg1 = "code_btn1";
                 this.bg2 = "code_btn3";
+                this.text2 ="登陆"
               } else if (response.data.code == 10007) {
                 this.tipsCode="验证码错误，请重新输入";
                 // 登录按钮和发送验证码按钮取消禁用
@@ -177,6 +178,7 @@ export default {
                 // 登录和发送验证码按钮背景变正常色
                 this.bg1 = "code_btn1";
                 this.bg2 = "code_btn3";
+                this.text2 ="登陆"
               } else if (response.data.code == 10002) {
                 this.tipsCode="手机号格式不正确";
                 // 登录按钮和发送验证码按钮取消禁用
@@ -185,6 +187,7 @@ export default {
                 // 登录和发送验证码按钮背景变正常色
                 this.bg1 = "code_btn1";
                 this.bg2 = "code_btn3";
+                this.text2 ="登陆"
               }
             })
             .catch(err => {
@@ -198,6 +201,7 @@ export default {
               // 登录和发送验证码按钮背景变正常色
               this.bg1 = "code_btn1";
               this.bg2 = "code_btn3";
+              this.text2 ="登陆"
             });
           // 输入不符合正则规则
         } else {
