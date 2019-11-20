@@ -3,23 +3,21 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import friend from './friend';
+import details from './details';
+
 export default new Vuex.Store({
   state: {
-    // appear:true,
-    // phone:''
+ 
   },
   mutations: {
-    // changelogin(state,payload){
-    //   state.appear=false;
-    //   state.phone=payload;
-    // }
+
   },
   actions: {
-    // changelogin(context,payload){
-    //   context.commit('changelogin',payload);
-    // }
+
   },
   modules: {
-
+    friend,
+    details
   }
 })

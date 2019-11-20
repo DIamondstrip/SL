@@ -24,7 +24,7 @@ const routes = [{
     component: () => import('../views/like/details.vue')
   },
   {
-    path:'/photoalbum',//相册, 详情页跳转过来
+    path:'/photoalbum/:id',//相册, 详情页跳转过来
     component:()=>import('../views/like/Photoalbum.vue')
   },
   {
