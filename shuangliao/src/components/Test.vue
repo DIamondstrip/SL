@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .Test{
-    width: 100%
+    width: 100%;
 }
 .Test .van-nav-bar__left .pb_icon {
   transform: rotate(90deg);

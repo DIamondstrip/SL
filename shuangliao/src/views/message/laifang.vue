@@ -9,7 +9,9 @@
                 <ul >
                     <li :key="item.index" v-for="item in Data1">
                         <router-link :to="'/details/'+item.vUid">
-                        <div class="touxiang"></div>
+                        <div class="touxiang">
+                          <img :src="item.avatar" alt="">
+                        </div>
                         <div class="center">
                             <p><span>{{item.nick}}</span>&nbsp;<span class="sex" ref="sex" v-if="item.sex==1">♂{{item.age}}</span>
                             <span class="sex1" ref="sex" v-else>♀{{item.age}}</span></p>
@@ -24,7 +26,9 @@
                  <ul>
                     <li :key="aaa.index" v-for="aaa in Data2">
                         <router-link :to="'/details/'+aaa.uid">
-                        <div class="touxiang"></div>
+                        <div class="touxiang">
+                          <img :src="aaa.avatar" alt="">
+                        </div>
                         <div class="center">
                             <p><span>{{aaa.nick}}</span>&nbsp;<span class="sex" v-if="aaa.sex==1">♂{{aaa.age}}</span>
                             <span class="sex1" v-else>♀{{aaa.age}}</span></p>
@@ -56,8 +60,8 @@ export default {
     };
   },
  components:{
-        Test,
-    },
+      Test
+  },
   methods: {
      
      num1(){
@@ -84,18 +88,17 @@ export default {
          this.$router.push({path:'/details/id'})
      },
   },
-  mounted() {
+  created() {
     eventbus.$emit('showFooter',false)
+    let data = JSON.parse(window.localStorage.getItem('userInfo'));
     this.$axios({//请求
       method: "post",
       url: "/user/visitor",
-      params:{tel:"13516783231",visit_state:'1'},
+      params:{tel:data.tel,visit_state:'1'},
     })
       .then(response => {
-        console.log(1);
         console.log(response.data.data)
         this.Data1=response.data.data;
-       
         return this.Data1;
       })
       .catch(function(error) {
@@ -108,7 +111,6 @@ export default {
       params:{tel:"13516783231",visit_state:'2'},
     })
       .then(response => {
-        console.log(2);
         console.log(response.data.data)
         this.Data2=response.data.data;
         return this.Data2;
@@ -118,6 +120,7 @@ export default {
       });
   },
 }
+
 </script>
 
 <style scoped>
@@ -164,9 +167,9 @@ export default {
     width:50px;
     height:50px;
     border-radius: 50%;
-    background: pink;
     margin:15px 5px 0px 2px;
     float: left;
+    overflow: hidden;
 }
 .content ul li .center{
     width:120px;
@@ -223,9 +226,9 @@ export default {
     width:50px;
     height:50px;
     border-radius: 50%;
-    background: pink;
     margin:15px 5px 0px 2px;
     float: left;
+    overflow: hidden;
 }
 .qufang ul li .center{
     width:120px;

@@ -39,11 +39,6 @@ module.exports = {
                 ws: true,
                 changeOrigin: true //允许跨域
             },
-            '/searchUsers':{ // 搜索
-                target:'/http://fgserver.top',
-                ws:true,
-                changeOrigin:true
-            },
             '/user/personal_details':{ // 个人详情页 
                 target:'http://fgserver.top',
                 ws:true,

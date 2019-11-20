@@ -9,7 +9,12 @@
             ></i>
             <span>TA的相册</span>
         </div>
-        <van-image-preview v-model="show" :images="images" @change="onChange">
+        <van-image-preview
+            v-model="show"
+            :images="images"
+            @change="onChange"
+            :startPosition="start"
+        >
             <template v-slot:index>第{{ index+1 }}页</template>
         </van-image-preview>
         <ul class="photoList">
@@ -20,12 +25,14 @@
     </div>
 </template>
 <script>
+import eventbus from "../../eventbus";
 export default {
     data() {
         return {
             show: false,
             index: 0,
             images: [],
+            start: 0
         };
     },
 
@@ -36,9 +43,9 @@ export default {
         goBack() {
             this.$router.back();
         },
-        showpic(index){
-            this.show=true;
-            this.index=index;
+        showpic(index) {
+            this.show = true;
+            this.start = index;
         }
     },
     created() {
@@ -49,11 +56,15 @@ export default {
     computed: {
         album() {
             let album = this.$store.state.details.album;
-            this.images = album.map(value=>{//利用计算属性缓存,不至于刷新了没了
+            this.images = album.map(value => {
+                //利用计算属性缓存,不至于刷新了没了
                 return value.pImageurl;
-            })
+            });
             return album;
         }
+    },
+    mounted() {
+        eventbus.$emit("showFooter", false);
     }
 };
 </script>
