@@ -24,7 +24,14 @@ module.exports = {
                 target: 'http://fgserver.top',//代理的接口域名
                 ws: true,
                 changeOrigin: true //允许跨域
-            }
+            },
+            //加上就好了 自己加
+            // 搜索接口代理
+            '/searchUsers':{
+                target: 'http://fgserver.top',//代理的接口域名
+                ws: true,
+                changeOrigin: true //允许跨域
+            },
         }
     },
     css: {
