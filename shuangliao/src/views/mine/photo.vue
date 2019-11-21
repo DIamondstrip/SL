@@ -47,7 +47,7 @@ export default {
         .then(res => {
           console.log(res) //res 为接口返回值
           this.photo.url = res.data.data
-          location.reload()
+          // location.reload()
         })
         .catch(() => {
           console.log(error)

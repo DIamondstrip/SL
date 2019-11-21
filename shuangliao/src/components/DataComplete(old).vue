@@ -8,7 +8,7 @@
         <div class="imginfo">
           上传头像
           <van-uploader
-            :after-read="afterRead"
+            :after-read="onRead2"
             id="uploadavatar"
             v-model="fileList"
             :max-count="1"
@@ -38,7 +38,7 @@
           v-bind:class="bgbtn"
           :disabled="codeDisabled"
         >
-          {{this.text}}
+          完成
         </button>
       </li>
     </ul>
@@ -108,8 +108,6 @@ export default {
   name: "datacomplete",
   data() {
     return {
-      // 按钮文字
-      text:"完成",
       // 是否禁用按钮
       codeDisabled: false,
       // 完成按钮的颜色
@@ -117,7 +115,7 @@ export default {
       // 提示
       inputtip: "",
       // 图片数据
-      fileList: [{url:''}],
+      fileList: [],
       imginfo: "",
       // 日期数据
       show_date: false,
@@ -149,50 +147,54 @@ export default {
   mounted() {
     eventbus.$emit('showFooter',false)
     // 挂载时接收路由传递过来的参数
-    this.phone = this.$route.params.phone;
+    // this.phone = this.$route.params.phone;
     this.sex = this.$route.params.sex;
+    this.phone= JSON.parse(window.localStorage.getItem('userInfo')).tel;
+    // this.sex= JSON.parse(window.localStorage.getItem('userInfo')).sex;
+    
     console.log(this.phone);
     console.log(this.sex);
   },
   methods: {
     // 图片上传
-    afterRead(file) {
-      this.uploadImg(file.file);},
-    uploadImg(file) {
-      let formdata1 = new FormData();// 创建form对象
-      // 通过append向form对象添加数据,可以通过append继续添加数据
-      //或formdata1.append('file',file);
-      formdata1.append("file", file);
-      // console.log
-      this.axios //是因为在main.js写在vue实例里
-      this.axiosAjax
-        .post("/file/imageupload", formdata1)
-        .then(res => {   
-          console.log(res); //res 为接口返回值
-          this.fileList[0].url=res.data.data
-        })
-        .catch(() => {console.log(error)});
-
     // onRead2方法会接收一个file参数，需要将file.file中的参数传到数据库，
-    // onRead2(file) {
-    //   console.log("1:", file);
-    //   console.log("2:", file.file);
-    //   console.log("3:", file.content);
-    //   // onRead2方法会接收一个file参数，获取关于上传头像的信息
-    //   this.imginfo = file.file;
+    onRead2(file) {
+      console.log("1:", file);
+      console.log("2:", file.file);
+      console.log("3:", file.content);
+      // onRead2方法会接收一个file参数，获取关于上传头像的信息
+      this.imginfo = file.file;
     },
     // 日期有关事件
     showdate() {
       this.show_date = true;
     },
-    date_onConfirm(type) {
-      this.date = type.toLocaleString().split(" ")[0];
-      this.show_date = false;
-      console.log(this.date);
+    // date_onConfirm(type) {
+    //   this.date = type.toLocaleString().split(" ")[0];
+    //   this.show_date = false;
+    //   console.log(this.date);
+    // },
+    // date_onCancel() {
+    //   this.show_date = false;
+    // },
+     date_onConfirm(type) {
+    let year =type.getFullYear();
+    let month =type.getMonth() + 1;
+    let day =type.getDate();
+    if (month < 10) {
+    month = "0" + month;
+    }
+    if (day < 10) {
+    day = "0" + day;
+    }
+    this.date = year + "-" + month + "-" + day;
+      // this.date=type.toLocaleString().split(' ')[0];
+      this.show_date = false
     },
     date_onCancel() {
-      this.show_date = false;
+    this.show_date = false
     },
+
     editnickname() {
       //编辑称昵,从底部向上滑出
       this.isActive = false;
@@ -212,44 +214,66 @@ export default {
       }
     },
     SubmitData() {
+      
       // 所有需要填写的资料都填写完了，则发送请求 this.imginfo &&
-      if ( this.sex && this.usernickname && this.date) {
+      // if ( this.sex && this.usernickname && this.date) {
         // 禁用完成按钮,避免重复发送请求
-        this.codeDisabled = true;
+        // this.codeDisabled = true;
         // 按钮颜色改变
         // this.bgbtn = complete_btn2;
 
         // 所有资料填写完毕，将相应信息传给后端，同时转跳到首页
         // http://fgserver.top/editUserInfo
-        axios({
-          method: "post",
-          url: "/editUserInfo",
-          // axios
-          //   .post("/editUserInfo", {
-          //传参
-            params: {
-                tel: this.phone,
-                nick:this.usernickname,
-                sex:"2",
-                avatar:this.fileList[0].url
-            }
+        console.log(1);
+        // if ( (this.sex!=="") && (this.usernickname!=="") && (this.date!=="")) {
+        console.log(2);
+        // axios({
+        //   method: "post",
+        //   url: "/editUserInfo",
+        //   //传参
+        //     data: {
+        //         tel: this.phone,
+        //         nick:this.usernickname,
+        //         sex:this.sex,
+        //         birthday:this.date
+        //     }
+        // })
+        //   .then(response => {
+        //     console.log(response.data);
+        //       this.$router.push("/");
+        //   })
+        //   .catch(error => {
+        //     console.log(error);
+        //   });
 
-        })
-          .then(response => {
-            console.log(response.data);
-            if (response.data.messge) {
-              this.$router.push("/");
-            }
-          })
-          .catch(error => {
-            // 取消 禁用完成按钮
-            this.codeDisabled = false;
-            console.log(error);
-          });
-      } else {
-        // 提示需要重新提交
+         this.$axios({
+      method: "post",
+      url: "/editUserInfo",
+     data:{
+            tel:this.phone,
+            nick:this.usernickname,
+            sex:this.sex,
+            birthday:this.date
+          //   address:this.city,
+          //   autograph:this.own_write,
+          //  avatar:this.phototi[0].url,
       }
-    }
+     
+    })
+      .then(response => {
+        console.log(response.data)
+        this.$router.push("/");
+      })  
+      .catch(function(error) {
+
+        console.log(error);
+      });
+  
+    },
+
+
+
+    // }
   }
 };
 </script>

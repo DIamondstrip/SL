@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     touch1() {
-      this.sex = "female";
+      this.sex = 2;
       this.$refs.nv2.style.display = "block";
       this.$refs.nan2.style.display = "none";
       this.$refs.anniu.style.background =
@@ -58,7 +58,7 @@ export default {
       console.log(this.sex);
     },
     touch2() {
-      this.sex = "male";
+      this.sex = 1;
       this.$refs.nv2.style.display = "none";
       this.$refs.nan2.style.display = "block";
       this.$refs.anniu.style.background =

@@ -224,7 +224,7 @@ router.beforeEach((to, from, next) => {
       next('/CodeLogin');
     }
   }
-  // next();
+  next();
 })
 
 export default router
