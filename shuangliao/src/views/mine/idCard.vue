@@ -115,7 +115,7 @@ export default {
             .then(response => {
               console.log(response.data)
               this.$notify({ background: 'green', message: '上传成功' })
-              //   location.reload()
+                location.reload()
             })
             .catch(error => {
               console.log(error)

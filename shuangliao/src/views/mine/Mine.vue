@@ -105,25 +105,25 @@
         <div class="Dli">
           <router-link to="/idCard">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #f18194, #fa3455);"><i class="fa fa-address-card" aria-hidden="true" style="color:pink;"></i></div>
               <p style="font-size:10px;text-align:center">证件上传</p>
             </div>
           </router-link>
           <router-link to="/account">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #32a8fe, #2b6ada);"><i class="fa fa-shield" aria-hidden="true" style="color:#98cbf9"></i></div>
               <p style="font-size:10px;text-align:center">账号安全</p>
             </div>
           </router-link>
           <router-link to="/photo">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #fbb34f, #fb844f);"><i class="fa fa-camera" aria-hidden="true" style="color:#fdd2a7"></i></div>
               <p style="font-size:10px;text-align:center">个人相册</p>
             </div>
           </router-link>
           <router-link to="blackList">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #33e595, #0faa8a);"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#93e8c9"></i></div>
               <p style="font-size:10px;text-align:center">黑名单</p>
             </div>
           </router-link>
@@ -131,24 +131,24 @@
         <div class="Dli">
           <router-link to="ownset">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #fbb34f, #fb844f);"><i class="fa fa-cog" aria-hidden="true" style="color:#fdd3a7"></i></div>
               <p style="font-size:10px;text-align:center">设置</p>
             </div>
           </router-link>
           <router-link to="Editdata">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #33e595, #0faa8a);"><i class="fa fa-pencil-square" aria-hidden="true" style="color:#8ee0c7"></i></div>
               <p style="font-size:10px;text-align:center">编辑资料</p>
             </div>
           </router-link>
           <router-link to="usuproblem">
             <div class="xq">
-              <div class="img"></div>
+              <div class="img" style="background:linear-gradient(to bottom, #ad56fe, #532a9f);"><i class="fa fa-exclamation-circle" aria-hidden="true" style="color:#c9a6f1"></i></div>
               <p style="font-size:10px;text-align:center">常见问题</p>
             </div>
           </router-link>
           <div class="xq">
-            <div class="img"></div>
+            <div class="img" style="background:linear-gradient(to bottom, #f96688, #fa3354);"><i class="fa fa-share-square-o" aria-hidden="true" style="color:#fca9ba"></i></div>
             <p style="font-size:10px;text-align:center">分享</p>
           </div>
         </div>
@@ -378,6 +378,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: center;
+}
+.xq i{
+  line-height:50px;
 }
 .img {
   width: 50px;
