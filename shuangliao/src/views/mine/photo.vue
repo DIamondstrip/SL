@@ -48,6 +48,18 @@ export default {
           console.log(res) //res 为接口返回值
           this.photo.url = res.data.data
           // location.reload()
+          // 上传照片
+          this.$axios({
+            method: 'post',
+            url: '/photo/add_photo',
+            params: { tel: this.user.tel, imageurl: this.photo.url }
+          })
+            .then(response => {
+              console.log(response.data.code)
+            })
+            .catch(error => {
+              console.log(error)
+            })
         })
         .catch(() => {
           console.log(error)
@@ -61,12 +73,14 @@ export default {
 
     this.$axios({
       method: 'post',
-      url: '/showMyPhotos',
+      url: '/photo/getAllPhoto',
       params: { tel: this.user.tel }
     })
       .then(response => {
-        console.log(response)
-        //   this.photoList
+        console.log('返回', response)
+        for (var j in response.data.data) {
+          this.fileList.push({ url: response.data.data[j].pImageurl })
+        }
       })
       .catch(error => {
         console.log('出错啦！', error)

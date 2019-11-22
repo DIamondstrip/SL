@@ -20,7 +20,9 @@
           <div class="uploader">
             <van-uploader :after-read="afterRead"
                           v-model="fileList"
-                          :max-count="1" />
+                          :max-count="1"
+                          :disabled="disabled"
+                          :deletable="deletable" />
           </div>
         </div>
         <div v-if="imgShow2">
@@ -66,7 +68,9 @@ export default {
       imgShow1: true,
       imgShow2: false,
       butValue: '完成',
-      user: ''
+      user: '',
+      disabled: false,
+      deletable: true
     }
   },
   methods: {
@@ -97,18 +101,21 @@ export default {
           /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.value) &&
           this.photo.url
         ) {
+          console.log(this.value)
+          console.log(this.photo.url)
           this.$axios({
             method: 'post',
             url: '/uploadCard',
             params: {
-              tel: '13516783231',
+              tel: this.user.tel,
               card_id: this.value,
               card_url: this.photo.url
             }
           })
             .then(response => {
+              console.log(response.data)
               this.$notify({ background: 'green', message: '上传成功' })
-              location.reload()
+              //   location.reload()
             })
             .catch(error => {
               console.log(error)
@@ -142,7 +149,7 @@ export default {
     eventbus.$emit('showFooter', false)
 
     this.user = JSON.parse(window.localStorage.getItem('userInfo'))
-
+    console.log(this.user.tel)
     this.$axios({
       method: 'post',
       url: '/getCardInfo',
@@ -159,6 +166,9 @@ export default {
           this.imgShow2 = true
           this.butValue = '已上传'
           this.$refs.btnRef.style = 'background:green'
+          this.disabled = true
+          this.deletable = false
+          this.fileList.push({ url: response.data.data.cardUrl })
         }
       })
       .catch(error => {})

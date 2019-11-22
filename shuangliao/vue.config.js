@@ -115,6 +115,24 @@ module.exports = {
 				target: 'http://fgserver.top', //代理的接口域名
 				ws: true,
 				changeOrigin: true //允许跨域
+			},
+			// 上传照片
+			'/photo/add_photo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			// 删除相片
+			'/photo/delete_photo': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
+			},
+			// 获取所有相片
+			'/photo/getAllPhoto': {
+				target: 'http://fgserver.top', //代理的接口域名
+				ws: true,
+				changeOrigin: true //允许跨域
 			}
 		}
 	},
